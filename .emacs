@@ -29,7 +29,7 @@
  '(variable-pitch ((t (:family "Georgia"))))
  '(widget-documentation ((((class color) (background dark)) (:foreground "lime green")))))
 
-(setq initial-frame-alist '((top . 1) (width . 120) (height . 60)));set initial frame dimensions
+(setq initial-frame-alist '((top . 1) (width . 120) (height . 60)));set initial frame dimensionsxh
 
 (scroll-bar-mode -1);remove scrollbar
 
@@ -63,18 +63,35 @@
 ;;key bindings
 (global-set-key [f1] '(lambda () (interactive) (find-file "~/.emacs")));open .emacs
 (global-set-key [f2] '(lambda () (interactive) (load-file "~/.emacs")));reload .emacs
-(global-set-key [f3] '(lambda () (interactive) (slime)));M-x slime
+(global-set-key [f3] 'slime);'(lambda () (interactive) (slime)));M-x slime
 (setq mac-command-modifier 'meta)
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (defalias 'qrr 'query-replace-regexp)
-(global-set-key (kbd "<C-tab>") 'other-window);switch focus to other window
+(global-set-key [(control .)] 'eval-buffer);Ctrl-. for M-x eval-buffer
+;(global-set-key (kbd "<C-tab>") 'other-window);switch focus to other window
 ;(global-set-key (kbd "<C-tab>") 'bury-buffer) ;cycle through buffers with C-TAB
 (global-set-key [kp-delete] 'delete-char) ;enable forward deleting
 (delete-selection-mode 1);typing overrides selected region
 (define-key text-mode-map (kbd "TAB") 'self-insert-command);TAB keys inserts single tab in text-mode
+(global-set-key "\C-ct" 'text-mode);change buffer to text mode
+(global-set-key "\C-cl" 'lisp-interaction-mode);change buffer to lisp interaction mode
+(global-set-key "\C-ch" 'hippie-expand);auto-completion
+
+;;macro to move to beginning of the next line
+(fset 'start-next-line
+   "\C-n\C-a")
+(global-set-key (kbd "M-n") 'start-next-line)
+
+;;macro to insert line of 25 asterisks
+(fset 'asterisk-line
+   "\C-u25*")
+(global-set-key (kbd "C-,") 'asterisk-line)
+
 (setq echo-keystrokes 0.1);Immediately show unfinished keystrokes in mini-buffer
+
 (fset 'yes-or-no-p 'y-or-n-p);y/n instead of yes/no
+
 ;;if no text is selected, M-w will copy line instead of region
 (defadvice kill-ring-save (before slick-copy activate compile)
   (interactive
@@ -104,6 +121,12 @@
 (setq-default save-place t)
 (require 'saveplace)
 
+(setq delete-by-moving-to-trash t);move deleted files to trash
+
+;;builds list of recent files
+(require 'recentf)
+(recentf-mode 1)
+
 ;;return a backup file path of a given file path
 ;;with full directory mirroring from a root dir
 ;;non-existant dir will be created
@@ -129,7 +152,6 @@ If the new path's directories does not exist, create them."
              (getenv "HOME") "~"
              (file-name-directory buffer-file-name)) 
        (buffer-name))))
-(put 'dired-find-alternate-file 'disabled nil)
 
 ;;SLIME
 (add-to-list 'load-path "/Applications/Emacs.app/Contents/Resources/lisp/slime")
@@ -161,3 +183,5 @@ If the new path's directories does not exist, create them."
   (add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
   (auto-complete-mode 1))
 (add-hook 'ielm-mode-hook 'ielm-auto-complete)
+
+(put 'dired-find-alternate-file 'disabled nil)
