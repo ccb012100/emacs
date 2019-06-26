@@ -28,12 +28,6 @@
 ;; save recent files list every 5 minutes
 (run-at-time nil (* 5 60) 'recentf-save-list)
 
-;; reformat buffer (like "format document" in Visual Studio)
-(defun indent-buffer ()
-  (interactive)
-  (save-excursion
-	(indent-region (point-min) (point-max) nil)))
-(global-set-key (kbd "C-k C-d") 'indent-buffer)
 
 ;; set theme
 (add-hook
