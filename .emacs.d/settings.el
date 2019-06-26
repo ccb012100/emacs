@@ -28,3 +28,6 @@
 (setq ns-pop-up-frames nil) ; always open in same frame
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
+
+(setq gc-cons-threshold 50000000) ; increase garbage collection threhold to 50 MB
+(setq large-file-warning-threshold 100000000) ; increase large file warning threshold to 100MB

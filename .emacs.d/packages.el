@@ -4,7 +4,7 @@
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-		    (not (gnutls-available-p))))
+					(not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
   (when no-ssl
     (warn "\
@@ -43,9 +43,14 @@ There are two things you can do about this warning:
 
 (use-package helm
   :bind (("M-x" . helm-M-x)
-	 ("C-x r b" . helm-filtered-bookmarks)
-	 ("C-x C-f" . helm-mini)
-	 ("<tab>" . helm-maybe-exit-minibuffer))
+		 ("C-x r b" . helm-filtered-bookmarks)
+		 ("C-x C-f" . helm-find-files)
+		 ("C-x b" . helm-buffers-list)
+		 ("C-x m" . helm-mini)
+		 :map helm-map
+		 ("C-i" . helm-execute-persistent-action)
+		 :map helm-find-files-map
+		 ("C-<backspace>" . helm-find-files-up-one-level)) ; map <TAB> to 
   :init (helm-mode 1))
 
 (use-package dracula-theme)
