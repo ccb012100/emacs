@@ -3,8 +3,7 @@
 (unless (server-running-p) (server-start))
 
 ;; for custom settings set by emacs - don't want these polluting .emacs file
-(setq custom-file "~/.emacs-custom.el")
-(load custom-file)
+(setq custom-file (make-temp-file "emacs-custom"))
 
 ;; customizing emacs settings
 (setq settings-file "~/.emacs.d/settings.el")
@@ -28,10 +27,8 @@
 ;; save recent files list every 5 minutes
 (run-at-time nil (* 5 60) 'recentf-save-list)
 
-;; set theme
-(add-hook 'after-init-hook (load-theme 'monokai t))
-
 (switch-to-buffer "*scratch*") ; initial buffer
+
 ;; since this is the last line, if the scratch buffer shows the default message then the .emacs file didn't load completely
-(setq initial-scratch-message "*scratch* buffer")
+(setq initial-scratch-message ";; *init scratch buffer*\n\n")
 
