@@ -7,7 +7,8 @@
 (add-to-list 'package-archives '("melpagnu" . "https://elpa.gnu.org/packages/"))
 (package-initialize)
 
-(when (not package-archive-contents) (package-refresh-contents))
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (package-install-selected-packages)
 
@@ -17,6 +18,13 @@
 (use-package windmove)
 (use-package all-the-icons)
 
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "pandoc"))
+
 (use-package company
   :hook (after-init . global-company-mode))
 
@@ -24,8 +32,6 @@
   :init (drag-stuff-global-mode 1)
   (drag-stuff-mode t)
   :hook (after-init . drag-stuff-define-keys))
-
-;; (drag-stuff-define-keys)
 
 (use-package helm
   :bind (("C-b" . helm-buffers-list)
@@ -49,23 +55,17 @@
   :bind ("M-o" . ace-window)
   :init (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l)))
 
-(use-package neotree
-  :bind (([f8] . neotree-toggle)
-		 ("C-x t" . neotree-toggle))
-  :init (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-
 (use-package doom-themes
   :after neotree)
 
 (use-package rainbow-delimiters
-  :hook
-  (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package rainbow-mode
   :hook prog-mode)
 
 ;; (use-package dashboard
-  ;; :config (dashboard-setup-startup-hook))
+;; :config (dashboard-setup-startup-hook))
 
 ;; figure out why these won't work in the :hook
 (load-theme 'doom-vibrant t)

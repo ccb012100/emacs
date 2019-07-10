@@ -43,6 +43,7 @@
 (global-set-key (kbd "C-t") 'set-mark-command)
 (global-set-key (kbd "C-.") 'redo)
 (global-set-key (kbd "C-;") 'kill-line) ; delete from cursor to EOL
+(global-set-key (kbd "C-,") 'repeat)
 (global-set-key (kbd "C-f") 'occur)
 (global-set-key (kbd "C-j") 'join-lines)
 (global-set-key (kbd "C-l") 'kill-whole-line)
@@ -75,7 +76,9 @@
 ; for terminals, since C-m can't be bound separately from <return>
 (global-set-key (kbd "M-RET") 'new-line-below)
 
-
 ;; map C-i separate from <tab> key
 (define-key input-decode-map "\C-i" [C-i])
 (global-set-key (kbd "<C-i>") 'forward-word)
+
+;; the recentf mode binds RET, so I have to bind <return> explicitly
+(define-key recentf-dialog-mode-map (kbd "<return>") 'widget-button-press)
