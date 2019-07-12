@@ -1,22 +1,5 @@
-;;;
-;;; Keybindings
-;;;
 
-;; like "format document" in Visual Studio
-(defun format-buffer ()
-  (interactive)
-  (save-excursion
-	(indent-region (point-min) (point-max) nil)))
 
-;; join line with next line
-(defun join-lines () (interactive) (join-line 1))
-
-;; create new line below current line and move the cursor to it
-(defun new-line-below () (interactive) (end-of-line) (newline))
-
-(defun select-word-under-cursor () (interactive) '(thing-at-point 'word 'no-properties))
-
-(global-set-key (kbd "TAB") 'self-insert-command) ; insert tab char in text mode
 
 (global-unset-key (kbd "C-k")) ; unset so I can use for chords
 (global-unset-key (kbd "C-x f")) ; this is useless but I keep calling it on accident
@@ -24,15 +7,18 @@
 (global-set-key [f12] '(lambda() (interactive) (find-file "~/.emacs.d/init.el")))
 (global-set-key [f5] '(lambda() (interactive) (load-file "~/.emacs.d/init.el")))
 
+(global-set-key [mouse-2] 'yank)
 (global-set-key (kbd "<end>") 'end-of-line)
 (global-set-key (kbd "<home>") 'beginning-of-line)
 
-(global-set-key (kbd "C-k C-d") 'format-buffer)
+(global-set-key (kbd "C-k C-d") 'reformat-document)
+(global-set-key (kbd "C-k C-k") 'kill-ring-save) ; copy
 
-(global-set-key (kbd "C-k a") 'mark-whole-buffer) ; select all
-(global-set-key (kbd "C-k c") 'kill-ring-save) ; copy
-(global-set-key (kbd "C-k x") 'kill-region) ; cut
 (global-set-key (kbd "C-k b") 'eval-buffer)
+(global-set-key (kbd "C-k g") 'goto-line)
+(global-set-key (kbd "C-k k") 'kill-region) ; cut
+(global-set-key (kbd "C-k l") 'avy-copy-line)
+(global-set-key (kbd "C-k m") 'set-mark-command)
 (global-set-key (kbd "C-k s") 'sort-lines)
 
 (global-set-key (kbd "C-x C-/") 'comment-region) ; paste
@@ -69,12 +55,9 @@
 	  (define-key minibuffer-local-map (kbd "<return>") 'exit-minibuffer)
 	  (eval-after-load 'help-mode
 		'(define-key help-mode-map (kbd "<return>") 'help-follow-symbol))
-	  (define-key button-map (kbd "<return>") 'push-button))
-  ;; else is terminal
-  )
+	  (define-key button-map (kbd "<return>") 'push-button)))
 
-; for terminals, since C-m can't be bound separately from <return>
-(global-set-key (kbd "M-RET") 'new-line-below)
+(global-set-key (kbd "M-RET") 'new-line-below) ; for terminals, since C-m can't be bound separately from <return>
 
 ;; map C-i separate from <tab> key
 (define-key input-decode-map "\C-i" [C-i])
@@ -82,3 +65,6 @@
 
 ;; the recentf mode binds RET, so I have to bind <return> explicitly
 (define-key recentf-dialog-mode-map (kbd "<return>") 'widget-button-press)
+
+(define-key text-mode-map (kbd "TAB") 'self-insert-command) ; insert tab char in text mode
+

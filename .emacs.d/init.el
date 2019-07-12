@@ -5,6 +5,9 @@
 ;; for custom settings set by emacs - don't want these polluting .emacs file
 (setq custom-file (make-temp-file "emacs-custom"))
 
+;; custom functions
+(setq functions-file "~/.emacs.d/defuns.el")
+(load functions-file)
 ;; customizing emacs settings
 (setq settings-file "~/.emacs.d/settings.el")
 (load settings-file)

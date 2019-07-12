@@ -12,11 +12,32 @@
 
 (package-install-selected-packages)
 
+(setq use-package-verbose t)
+(setq use-package-always-ensure t)
 (use-package magit)
 (use-package smartparens)
 (use-package thingatpt)
 (use-package windmove)
-(use-package all-the-icons)
+
+(use-package centaur-tabs
+  :after doom-themes
+  :config
+  (setq centaur-tabs-style "bar"
+        centaur-tabs-set-bar 'left
+        centaur-tabs-set-close-button nil
+        centaur-tabs-set-icons t
+        centaur-tabs-set-bar 'over
+        centaur-tabs-set-modified-marker t
+        centaur-tabs-set-icons t)
+  :hook
+  (after-init . centaur-tabs-mode)
+  :hook
+  (after-init . centaur-tabs-headline-match)
+  :hook
+  (after-init . centaur-tabs-inherit-tabbar-faces)
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward))
 
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
@@ -39,7 +60,7 @@
 		 ("C-x C-f" . helm-find-files)
 		 ("C-x b" . helm-buffers-list)
 		 ("C-x m" . helm-mini)
-		 ("C-x r b" . helm-filtered-bookmarks)
+         ("C-x r b" . helm-filtered-bookmarks)
          ("C-SPC" . helm-M-x)
          ("C-z" . select-action)
          ("M-y" . helm-show-kill-ring)
@@ -48,8 +69,13 @@
 		 :map helm-find-files-map
 		 ("C-<backspace>" . helm-find-files-up-one-level))
   :config (helm-mode 1)
+  (ido-mode -1)
   (setq helm-split-window-inside-p t
         helm-move-to-line-cycle-in-source t))
+
+(use-package helm-descbinds
+  :after helm
+  :bind ("C-h b" . helm-descbinds))
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
@@ -57,6 +83,11 @@
 
 (use-package doom-themes
   :after neotree)
+
+;; TODO: figure out how to include these in (use-package doom-themes)
+(load-theme 'doom-vibrant t)
+(doom-themes-neotree-config)
+(doom-themes-visual-bell-config)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -68,14 +99,11 @@
 ;; :config (dashboard-setup-startup-hook))
 
 ;; figure out why these won't work in the :hook
-(load-theme 'doom-vibrant t)
-(doom-themes-neotree-config)
-(doom-themes-visual-bell-config)
-
 (use-package hlinum
   :init (hlinum-activate))
 
 (use-package smart-mode-line
+  :config (setq sml/theme 'dark)
   :init (smart-mode-line-enable))
 
 (use-package smartparens
