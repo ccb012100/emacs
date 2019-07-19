@@ -5,7 +5,7 @@
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char) ; maps fn-delete to right-delete
-  (set-face-attribute 'default nil :family "mononoki")
+  (set-face-attribute 'default nil :family "mononoki") ; set font
   
   ;; ITERM2 MOUSE SUPPORT
   (unless window-system

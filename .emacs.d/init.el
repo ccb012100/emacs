@@ -5,6 +5,9 @@
 ;; for custom settings set by emacs - don't want these polluting .emacs file
 (setq custom-file (make-temp-file "emacs-custom"))
 
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;; custom functions
 (setq functions-file "~/.emacs.d/defuns.el")
 (load functions-file)

@@ -62,3 +62,12 @@
         (goto-char beg))
       (sit-for blink-matching-delay))))
 (global-set-key [remap kill-ring-save] 'my-kill-ring-save)
+
+(defun set-theme-light()
+  (interactive)
+  (load-theme 'doom-one-light))
+
+(defun set-theme-dark()
+  (interactive)
+  (load-theme 'doom-molokai)
+  (set-face-background 'hl-line "#282A36")) ; more visible line highlight color

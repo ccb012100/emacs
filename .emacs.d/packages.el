@@ -14,30 +14,11 @@
 
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
+
 (use-package magit)
 (use-package smartparens)
 (use-package thingatpt)
 (use-package windmove)
-
-(use-package centaur-tabs
-  :after doom-themes
-  :config
-  (setq centaur-tabs-style "bar"
-        centaur-tabs-set-bar 'left
-        centaur-tabs-set-close-button nil
-        centaur-tabs-set-icons t
-        centaur-tabs-set-bar 'over
-        centaur-tabs-set-modified-marker t
-        centaur-tabs-set-icons t)
-  :hook
-  (after-init . centaur-tabs-mode)
-  :hook
-  (after-init . centaur-tabs-headline-match)
-  :hook
-  (after-init . centaur-tabs-inherit-tabbar-faces)
-  :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward))
 
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
@@ -85,7 +66,7 @@
   :after neotree)
 
 ;; TODO: figure out how to include these in (use-package doom-themes)
-(load-theme 'doom-vibrant t)
+(set-theme-dark)
 (doom-themes-neotree-config)
 (doom-themes-visual-bell-config)
 
