@@ -5,36 +5,40 @@
 ;; for custom settings set by emacs - don't want these polluting .emacs file
 (setq custom-file (make-temp-file "emacs-custom"))
 
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-
-;; custom functions
-(setq functions-file "~/.emacs.d/defuns.el")
-(load functions-file)
-;; customizing emacs settings
-(setq settings-file "~/.emacs.d/settings.el")
-(load settings-file)
-;; adding/configuring emacs packages
-(setq packages-file "~/.emacs.d/packages.el")
-(load packages-file)
-;; custom keybindings
-(setq keybindings-file "~/.emacs.d/keybindings.el")
-(load keybindings-file)
-;; macOS settings
-(setq macos-file "~/.emacs.d/macOS.el")
-(load macos-file)
-
 ;; set default window size (desktop-save-mode will override this)
 (when (or window-system (daemonp)) (setq default-frame-alist '( (width . 120) (height . 80) )))
 
 ;; confirm kill if emacs is started by non-deamon mode
 (if (daemonp) nil (setq confirm-kill-emacs 'y-or-n-p))
 
-;; save recent files list every 5 minutes
-(run-at-time nil (* 5 60) 'recentf-save-list)
+;; macOS settings
+(setq macos-file "~/.emacs.d/macOS.el")
+(load macos-file)
 
+;; custom functions
+;; customizing emacs settings
+(setq settings-file "~/.emacs.d/settings.el")
+(load-file settings-file)
+
+(setq functions-file "~/.emacs.d/defuns.el")
+(load-file functions-file)
+
+;; custom keybindings
+(setq keybindings-file "~/.emacs.d/keybindings.el")
+(load-file keybindings-file)
+
+;; adding/configuring emacs packages
+(setq packages-file "~/.emacs.d/packages.el")
+(load-file packages-file)
+
+;; save recent files list every 5 minutes
+(run-at-time nil (* 5 60)
+             (lambda ()
+               (let ((save-silently t)) ; don't display save message in buffer
+                 (recentf-save-list))))
+
+(my/set-theme-dark)
 (switch-to-buffer "*scratch*") ; initial buffer
 
 ;; since this is the last line, if the scratch buffer shows the default message then the .emacs file didn't load completely
 (setq initial-scratch-message ";; *init scratch buffer*\n\n")
-

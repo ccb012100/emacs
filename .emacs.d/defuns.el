@@ -1,4 +1,4 @@
-(defun duplicate-line-or-region (&optional n)
+(defun my/duplicate-line-or-region (&optional n)
   "Duplicate current line, or region if active.
     With argument N, make N copies.
     With negative N, comment out original line and use the absolute value."
@@ -20,24 +20,27 @@
         (forward-line 1)
         (forward-char pos)))))
 
-;; join line with next line
-(defun join-lines ()
+(defun my/join-lines ()
+  "Join line with next line."
   (interactive)
   (join-line 1))
 
-;; create new line below current line and move the cursor to it
-(defun new-line-below ()
+(defun my/new-line-below ()
+  "Create a new line below current line and move the cursor to it."
   (interactive)
   (end-of-line)
   (newline))
 
-(defun select-word-under-cursor ()
+(defun my/select-word-under-cursor ()
+  ;; not quite same as Visual Studio, but similar
   (interactive)
   '(thing-at-point 'word 'no-properties))
 
-(defun reformat-document ()
+(defun my/reformat-document ()
+  "Indent document.
+    Similar to 'Reformat Document' document in Visual Studio."
   (interactive)
-  (unless (equal major-mode 'text-mode)
+  (unless (or (equal major-mode 'text-mode) (equal major-mode 'markdown-mode))
     (save-excursion
       (indent-region (point-min) (point-max) nil))))
 
@@ -49,7 +52,8 @@
            (list (region-beginning) (region-end))
          (list (line-beginning-position) (line-beginning-position 2)))))
 
-(defun my-kill-ring-save (beg end flash)
+(defun my/my-kill-ring-save (beg end flash)
+  "Modified version of kill-ring-save. Acts on line if no text is selected"
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end) nil)
                  (list (line-beginning-position)
@@ -63,11 +67,46 @@
       (sit-for blink-matching-delay))))
 (global-set-key [remap kill-ring-save] 'my-kill-ring-save)
 
-(defun set-theme-light()
-  (interactive)
-  (load-theme 'doom-one-light))
+;; disables all custom themes before loading (enabling) another one.
+;; from: https://emacs.stackexchange.com/a/3114
+(defadvice load-theme (before theme-dont-propagate activate)
+  (mapc 'disable-theme custom-enabled-themes))
 
-(defun set-theme-dark()
+(defun my/set-theme-light()
+  "Load light theme."
+  (interactive)
+  (load-theme 'doom-one-light)
+  (setq sml/theme 'light))
+
+(defun my/set-theme-dark()
+  "Load dark theme."
   (interactive)
   (load-theme 'doom-molokai)
-  (set-face-background 'hl-line "#282A36")) ; more visible line highlight color
+  ;; (setq sml/theme 'dark)
+  (set-face-foreground 'font-lock-comment-face "green"); more visible comment color
+  (set-face-background 'hl-line "#664400")) ;; more visible line highlight color
+
+(defun my/load-init-file()
+  "Reload the init.el file."
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
+(defun my/open-todo-file()
+  "Open todo.txt"
+  (interactive)
+  (find-file "~/todo.txt"))
+
+(defun my/open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(defun my/forward-5-lines()
+  "Move cursor down 5 lines."
+  (interactive)
+  (next-line 5))
+
+(defun my/back-5-lines()
+  "Move cursor up 5 lines."
+  (interactive)
+  (prev-line 5))
+

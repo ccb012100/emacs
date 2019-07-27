@@ -16,12 +16,16 @@
 (size-indication-mode t)
 (tool-bar-mode -1)
 (transient-mark-mode 1)	; highlight text selections
+
 (unless (display-graphic-p)  (electric-pair-mode 1)) ; use electic-pair-mode in terminal
 
 (setq-default cursor-type 'bar
               major-mode 'text-mode ; make text mode the default mode for new buffers
               tab-width 4
 			  indent-tabs-mode nil)
+
+;; set TLS version to fix bug in Emacs. See: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq column-number-mode t
       custom-safe-themes t ; stop emacs from asking if it's ok to load themes

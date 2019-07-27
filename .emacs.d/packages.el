@@ -11,7 +11,6 @@
   (package-refresh-contents))
 
 (package-install-selected-packages)
-
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
@@ -28,10 +27,14 @@
   :init (setq markdown-command "pandoc"))
 
 (use-package company
+  :bind (:map company-active-map
+              (("C-n" . company-select-next-or-abort)
+               ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode))
 
 (use-package drag-stuff
-  :init (drag-stuff-global-mode 1)
+  :init
+  (drag-stuff-global-mode 1)
   (drag-stuff-mode t)
   :hook (after-init . drag-stuff-define-keys))
 
@@ -46,13 +49,15 @@
          ("C-z" . select-action)
          ("M-y" . helm-show-kill-ring)
 		 :map helm-map
-		 ("<tab>" . helm-execute-persistent-action)
+         ("<tab>" . helm-execute-persistent-action)
 		 :map helm-find-files-map
 		 ("C-<backspace>" . helm-find-files-up-one-level))
   :config (helm-mode 1)
   (ido-mode -1)
   (setq helm-split-window-inside-p t
-        helm-move-to-line-cycle-in-source t))
+        helm-move-to-line-cycle-in-source t
+        helm-mode-fuzzy-match t
+        helm-completion-in-region-fuzzy-match t))
 
 (use-package helm-descbinds
   :after helm
@@ -66,7 +71,6 @@
   :after neotree)
 
 ;; TODO: figure out how to include these in (use-package doom-themes)
-(set-theme-dark)
 (doom-themes-neotree-config)
 (doom-themes-visual-bell-config)
 
@@ -76,19 +80,36 @@
 (use-package rainbow-mode
   :hook prog-mode)
 
-;; (use-package dashboard
-;; :config (dashboard-setup-startup-hook))
-
 ;; figure out why these won't work in the :hook
 (use-package hlinum
   :init (hlinum-activate))
 
 (use-package smart-mode-line
-  :config (setq sml/theme 'dark)
   :init (smart-mode-line-enable))
 
 (use-package smartparens
-  :config (progn
-            (require 'smartparens-config)
-            (smartparens-global-mode 1)
-            (show-paren-mode t)))
+  :config
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode 1)
+    (show-paren-mode t)))
+
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :config
+  (progn
+    (global-undo-tree-mode)))
+
+(use-package which-key
+  :bind ("C-h j" . which-key-show-major-mode)
+  :init
+  (which-key-mode)
+  (which-key-setup-minibuffer)
+  :config
+  (setq which-key-max-description-length 80)
+  (setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location '(right bottom)))
+
+(use-package helm-swoop
+  :after helm
+  :bind ("C-f" . helm-swoop))
