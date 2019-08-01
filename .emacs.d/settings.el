@@ -52,6 +52,7 @@
 	  scroll-conservatively 100000000
 	  scroll-preserve-screen-position 1)
 
+
 ;; file backups
 (setq backup-directory-alist `(("." . "~/.emacs.backup"))
       backup-by-copying t

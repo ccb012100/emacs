@@ -82,7 +82,7 @@
   "Load dark theme."
   (interactive)
   (load-theme 'doom-molokai)
-  ;; (setq sml/theme 'dark)
+  (setq sml/theme 'dark)
   (set-face-foreground 'font-lock-comment-face "green"); more visible comment color
   (set-face-background 'hl-line "#664400")) ;; more visible line highlight color
 
@@ -108,5 +108,4 @@
 (defun my/back-5-lines()
   "Move cursor up 5 lines."
   (interactive)
-  (prev-line 5))
-
+  (previous-line 5))

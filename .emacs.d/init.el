@@ -31,12 +31,6 @@
 (setq packages-file "~/.emacs.d/packages.el")
 (load-file packages-file)
 
-;; save recent files list every 5 minutes
-(run-at-time nil (* 5 60)
-             (lambda ()
-               (let ((save-silently t)) ; don't display save message in buffer
-                 (recentf-save-list))))
-
 (my/set-theme-dark)
 (switch-to-buffer "*scratch*") ; initial buffer
 

@@ -17,7 +17,6 @@
 (global-set-key (kbd "<end>") 'end-of-line)
 (global-set-key (kbd "<home>") 'beginning-of-line)
 
-
 (global-set-key (kbd "C-k b") 'eval-buffer)
 (global-set-key (kbd "C-k g") 'goto-line)
 (global-set-key (kbd "C-k C-k") 'kill-region) ; cut
