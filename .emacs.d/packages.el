@@ -14,6 +14,7 @@
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
+(use-package json-navigator)
 (use-package magit)
 (use-package smartparens)
 (use-package thingatpt)
@@ -112,4 +113,14 @@
 
 (use-package helm-swoop
   :after helm
-  :bind ("C-f" . helm-swoop))
+  :bind ("C-k f" . helm-swoop))
+
+(use-package origami
+  :bind
+  (("C-k o t" . origami-forward-toggle-node)
+   ("C-k o u" . origami-previous-fold)
+   ("C-k o i" . origami-forward-fold)
+   ("C-k o p" . origami-backward-fold-same-level)
+   ("C-k o n" . origami-forward-fold-same-level)
+   ("C-k o c" . origami-close-node))
+  :init (setq global-origami-mode t))

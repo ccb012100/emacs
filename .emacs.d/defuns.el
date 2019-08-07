@@ -109,3 +109,22 @@
   "Move cursor up 5 lines."
   (interactive)
   (previous-line 5))
+
+
+;; taken from https://emacs.stackexchange.com/a/3334
+(defvar my/killed-file-list nil
+  "List of recently killed files.")
+
+(defun my/add-file-to-killed-file-list ()
+  "If buffer is associated with a file name, add that file to the
+`killed-file-list' when killing the buffer."
+  (when buffer-file-name
+    (push buffer-file-name my/killed-file-list)))
+
+(add-hook 'kill-buffer-hook #'my/add-file-to-killed-file-list)
+
+(defun my/reopen-killed-file ()
+  "Reopen the most recently killed file, if one exists."
+  (interactive)
+  (when my/killed-file-list
+    (find-file (pop my/killed-file-list))))

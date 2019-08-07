@@ -20,6 +20,7 @@
 (global-set-key (kbd "C-k b") 'eval-buffer)
 (global-set-key (kbd "C-k g") 'goto-line)
 (global-set-key (kbd "C-k C-k") 'kill-region) ; cut
+(global-set-key (kbd "C-k j") 'join-lines)
 (global-set-key (kbd "C-k l") 'avy-copy-line)
 (global-set-key (kbd "C-k m") 'set-mark-command)
 (global-set-key (kbd "C-k s") 'sort-lines)
@@ -33,15 +34,13 @@
 (global-set-key (kbd "C-.") 'redo)
 (global-set-key (kbd "C-;") 'kill-line) ; delete from cursor to EOL
 (global-set-key (kbd "C-,") 'repeat)
-(global-set-key (kbd "C-j") 'join-lines)
+(global-set-key (kbd "C-j") 'backward-char)
 (global-set-key (kbd "C-l") 'kill-whole-line)
 (global-set-key (kbd "C-o") 'move-beginning-of-line)
 (global-set-key (kbd "C-u") 'backward-word)
 
-(global-set-key (kbd "M-i") 'forward-char)
 (global-set-key (kbd "M-n") 'scroll-up-line)
 (global-set-key (kbd "M-p") 'scroll-down-line)
-(global-set-key (kbd "M-u") 'backward-char)
 (global-set-key (kbd "M-w") 'mode-line-other-buffer) ; switch to previous buffer
 
 ;;;
@@ -61,5 +60,6 @@
 
 (global-set-key (kbd "C-M-n") 'my/forward-5-lines)
 (global-set-key (kbd "C-M-p") 'my/back-5-lines)
+(global-set-key (kbd "C-M-t") 'my/reopen-killed-file)
 
 (global-set-key (kbd "M-<return>") 'my/new-line-below)
