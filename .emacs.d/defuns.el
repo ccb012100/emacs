@@ -81,10 +81,10 @@
 (defun my/set-theme-dark()
   "Load dark theme."
   (interactive)
-  (load-theme 'doom-molokai)
-  (setq sml/theme 'dark)
-  (set-face-foreground 'font-lock-comment-face "green"); more visible comment color
-  (set-face-background 'hl-line "#664400")) ;; more visible line highlight color
+  (load-theme 'doom-dracula)
+  (setq sml/theme 'dark))
+  ;; (set-face-foreground 'font-lock-comment-face "green"); more visible comment color
+  ;; (set-face-background 'hl-line "#664400")) ;; more visible line highlight color
 
 (defun my/load-init-file()
   "Reload the init.el file."
