@@ -34,7 +34,6 @@
 (global-set-key (kbd "C-.") 'redo)
 (global-set-key (kbd "C-;") 'kill-line) ; delete from cursor to EOL
 (global-set-key (kbd "C-,") 'repeat)
-(global-set-key (kbd "C-j") 'backward-char)
 (global-set-key (kbd "C-l") 'kill-whole-line)
 (global-set-key (kbd "C-o") 'move-beginning-of-line)
 (global-set-key (kbd "C-u") 'backward-word)

@@ -16,6 +16,7 @@
 (size-indication-mode t)
 (tool-bar-mode -1)
 (transient-mark-mode 1)	; highlight text selections
+(delete-selection-mode 1)
 
 (unless (display-graphic-p)  (electric-pair-mode 1)) ; use electic-pair-mode in
 
@@ -54,7 +55,7 @@
 
 
 ;; file backups
-(setq backup-directory-alist `(("." . "~/.emacs.backup"))
+(setq backup-directory-alist `(("~/.emacs.backup"))
       backup-by-copying t
       delete-old-versions t
       kept-new-versions 1000

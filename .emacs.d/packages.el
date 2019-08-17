@@ -40,19 +40,18 @@
   :hook (after-init . drag-stuff-define-keys))
 
 (use-package helm
-  :bind (("C-b" . helm-buffers-list)
-         ("M-x" . helm-M-x)
-		 ("C-x C-f" . helm-find-files)
-		 ("C-x b" . helm-buffers-list)
-		 ("C-x m" . helm-mini)
+  :bind (("M-x" . helm-M-x)
+         ("C-x C-f" . helm-find-files)
+         ("C-x b" . helm-buffers-list)
+         ("C-x m" . helm-mini)
          ("C-x r b" . helm-filtered-bookmarks)
          ("C-SPC" . helm-M-x)
          ("C-z" . select-action)
          ("M-y" . helm-show-kill-ring)
-		 :map helm-map
+         :map helm-map
          ("<tab>" . helm-execute-persistent-action)
-		 :map helm-find-files-map
-		 ("C-<backspace>" . helm-find-files-up-one-level))
+         :map helm-find-files-map
+         ("C-<backspace>" . helm-find-files-up-one-level))
   :config (helm-mode 1)
   (ido-mode -1)
   (setq helm-split-window-inside-p t

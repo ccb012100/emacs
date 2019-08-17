@@ -81,7 +81,7 @@
 (defun my/set-theme-dark()
   "Load dark theme."
   (interactive)
-  (load-theme 'doom-dracula)
+  (load-theme 'doom-one)
   (setq sml/theme 'dark))
   ;; (set-face-foreground 'font-lock-comment-face "green"); more visible comment color
   ;; (set-face-background 'hl-line "#664400")) ;; more visible line highlight color
