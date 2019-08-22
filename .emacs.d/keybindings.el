@@ -8,7 +8,7 @@
 (global-unset-key (kbd "C-x f")) ; this is useless but I keep calling it on accident
 
 ;; (global-set-key [f6] '(lambda() (interactive) (revert-buffer "y"))) ; revert buffer without confirmation
-(global-set-key [f6] 'revert-buffer) ; revert buffer without confirmation (felt too nervous doing it without confirmation)
+(global-set-key [f6] 'revert-buffer) ; revert buffer with confirmation (felt too nervous doing it without confirmation)
 (global-set-key [f7] 'which-key-show-top-level)
 (global-set-key [f11] 'eval-buffer)
 
@@ -30,12 +30,13 @@
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer) ; just kill current buffer without asking
 
-(global-set-key (kbd "C-t") 'set-mark-command)
 (global-set-key (kbd "C-.") 'redo)
 (global-set-key (kbd "C-;") 'kill-line) ; delete from cursor to EOL
 (global-set-key (kbd "C-,") 'repeat)
+(global-set-key (kbd "C-j") 'my/join-lines)
 (global-set-key (kbd "C-l") 'kill-whole-line)
 (global-set-key (kbd "C-o") 'move-beginning-of-line)
+(global-set-key (kbd "C-t") 'set-mark-command)
 (global-set-key (kbd "C-u") 'backward-word)
 
 (global-set-key (kbd "M-n") 'scroll-up-line)

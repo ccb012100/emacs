@@ -55,7 +55,7 @@
 
 
 ;; file backups
-(setq backup-directory-alist `(("~/.emacs.backup"))
+(setq backup-directory-alist '(("." . "~/.emacs.backup"))
       backup-by-copying t
       delete-old-versions t
       kept-new-versions 1000
