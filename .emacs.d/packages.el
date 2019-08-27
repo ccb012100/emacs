@@ -3,8 +3,8 @@
 ;;;
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpagnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpagnu" . "https://elpa.gnu.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
