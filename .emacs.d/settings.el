@@ -3,6 +3,7 @@
 ;;;
 (blink-cursor-mode t)
 (column-number-mode t)
+(delete-selection-mode 1)
 (desktop-save-mode 1) ; remember last desktop settings
 (display-time) ; show time in mode line
 (fset 'yes-or-no-p 'y-or-n-p) ; y/n instead of yes/no
@@ -16,7 +17,7 @@
 (size-indication-mode t)
 (tool-bar-mode -1)
 (transient-mark-mode 1)	; highlight text selections
-(delete-selection-mode 1)
+(whitespace-mode 1)
 
 (unless (display-graphic-p)  (electric-pair-mode 1)) ; use electic-pair-mode in
 

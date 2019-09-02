@@ -9,7 +9,8 @@
                       (buffer-substring (region-beginning) (region-end))
                     (prog1 (thing-at-point 'line)
                       (end-of-line)
-                      (if (< 0 (forward-line 1)) ; Go to beginning of next line, or make a new one
+                                        ; Go to beginning of next line, or make a new one
+                      (if (< 0 (forward-line 1))
                           (newline))))))
         (dotimes (i (abs (or n 1))) ; Insert N times, or once if not specified
           (insert text))))
@@ -46,7 +47,7 @@
 
 ;; modify kill-region and kill-ring-save to act on line if no text is selected
 ;; see: https://www.emacswiki.org/emacs/WholeLineOrRegion
-(put 'kill-region 'interactive-form      
+(put 'kill-region 'interactive-form
      '(interactive
        (if (use-region-p)
            (list (region-beginning) (region-end))
@@ -75,16 +76,14 @@
 (defun my/set-theme-light()
   "Load light theme."
   (interactive)
-  (load-theme 'doom-one-light)
+  (load-theme 'gruvbox-light-medium)
   (setq sml/theme 'light))
 
 (defun my/set-theme-dark()
   "Load dark theme."
   (interactive)
-  (load-theme 'doom-one)
+  (load-theme 'doom-gruvbox)
   (setq sml/theme 'dark))
-  ;; (set-face-foreground 'font-lock-comment-face "green"); more visible comment color
-  ;; (set-face-background 'hl-line "#664400")) ;; more visible line highlight color
 
 (defun my/load-init-file()
   "Reload the init.el file."
@@ -94,12 +93,11 @@
 (defun my/open-todo-file()
   "Open todo.txt"
   (interactive)
-  (find-file "~/todo.txt"))
+  (find-file "~/daily-to-do-notes.txt"))
 
 (defun my/open-init-file()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
-
 (defun my/forward-5-lines()
   "Move cursor down 5 lines."
   (interactive)
@@ -128,3 +126,10 @@
   (interactive)
   (when my/killed-file-list
     (find-file (pop my/killed-file-list))))
+
+(defun my/insert-current-date ()
+  "Insert current date in format 'DayName DD-MM-YYYY'"
+  (interactive)
+  (let ((day (downcase (format-time-string "%a")))
+        (month (upcase (format-time-string "%b"))))
+    (insert (concat (format-time-string "%a %d-") month (format-time-string "-%Y")))))

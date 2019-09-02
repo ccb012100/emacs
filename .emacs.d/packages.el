@@ -90,16 +90,13 @@
 (use-package smartparens
   :config
   (progn
-    (require 'smartparens-config)
-    (smartparens-global-mode 1)
-    (show-paren-mode t)))
+    (require 'smartparens-config)))
 
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
   (progn
     (global-undo-tree-mode)))
-
 (use-package which-key
   :bind ("C-h j" . which-key-show-major-mode)
   :init
@@ -123,3 +120,6 @@
    ("C-k o n" . origami-forward-fold-same-level)
    ("C-k o c" . origami-close-node))
   :init (setq global-origami-mode t))
+
+(use-package vimrc-mode
+  :init (add-to-list 'auto-mode-alist '("\\.vim\\(rc\\)?\\'" . vimrc-mode)))

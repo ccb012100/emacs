@@ -2,7 +2,7 @@
 (define-key input-decode-map "\C-i" [C-i])
 (global-set-key (kbd "<C-i>") 'forward-word)
 
-(define-key text-mode-map (kbd "TAB") 'self-insert-command) ; insert tab char in text mode
+;;(define-key text-mode-map (kbd "TAB") 'self-insert-command) ; insert tab char in text mode
 
 (global-unset-key (kbd "C-k")) ; unset so I can use for chords
 (global-unset-key (kbd "C-x f")) ; this is useless but I keep calling it on accident
@@ -18,6 +18,7 @@
 (global-set-key (kbd "<home>") 'beginning-of-line)
 
 (global-set-key (kbd "C-k b") 'eval-buffer)
+(global-set-key (kbd "C-k d") 'my/insert-current-date)
 (global-set-key (kbd "C-k g") 'goto-line)
 (global-set-key (kbd "C-k C-k") 'kill-region) ; cut
 (global-set-key (kbd "C-k j") 'join-lines)
