@@ -31,7 +31,8 @@
   :bind (:map company-active-map
               (("C-n" . company-select-next-or-abort)
                ("C-p" . company-select-previous-or-abort)))
-  :hook (after-init . global-company-mode))
+  :hook (after-init . global-company-mode)
+  :init (setq company-idle-delay 0.2))
 
 (use-package drag-stuff
   :init
