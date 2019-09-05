@@ -68,13 +68,6 @@
   :bind ("M-o" . ace-window)
   :init (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l)))
 
-(use-package doom-themes
-  :after neotree)
-
-;; TODO: figure out how to include these in (use-package doom-themes)
-(doom-themes-neotree-config)
-(doom-themes-visual-bell-config)
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -86,18 +79,14 @@
   :init (hlinum-activate))
 
 (use-package smart-mode-line
-  :init (smart-mode-line-enable))
-
-(use-package smartparens
-  :config
-  (progn
-    (require 'smartparens-config)))
+  :init (sml/setup))
 
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
   (progn
     (global-undo-tree-mode)))
+
 (use-package which-key
   :bind ("C-h j" . which-key-show-major-mode)
   :init

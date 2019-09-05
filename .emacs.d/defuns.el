@@ -9,7 +9,7 @@
                       (buffer-substring (region-beginning) (region-end))
                     (prog1 (thing-at-point 'line)
                       (end-of-line)
-                                        ; Go to beginning of next line, or make a new one
+                      ;; Go to beginning of next line, or make a new one
                       (if (< 0 (forward-line 1))
                           (newline))))))
         (dotimes (i (abs (or n 1))) ; Insert N times, or once if not specified
@@ -53,7 +53,7 @@
            (list (region-beginning) (region-end))
          (list (line-beginning-position) (line-beginning-position 2)))))
 
-(defun my/my-kill-ring-save (beg end flash)
+(defun my/kill-ring-save-modified (beg end flash)
   "Modified version of kill-ring-save. Acts on line if no text is selected"
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end) nil)
@@ -76,14 +76,14 @@
 (defun my/set-theme-light()
   "Load light theme."
   (interactive)
-  (load-theme 'gruvbox-light-medium)
-  (setq sml/theme 'light))
+  (sml/apply-theme 'light)
+  (load-theme 'gruvbox-light-medium))
 
 (defun my/set-theme-dark()
   "Load dark theme."
   (interactive)
-  (load-theme 'doom-gruvbox)
-  (setq sml/theme 'dark))
+  (sml/apply-theme 'dark)
+  (load-theme 'gruvbox-dark-medium))
 
 (defun my/load-init-file()
   "Reload the init.el file."
@@ -95,27 +95,12 @@
   (interactive)
   (find-file "~/daily-to-do-notes.txt"))
 
-(defun my/open-init-file()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
-(defun my/forward-5-lines()
-  "Move cursor down 5 lines."
-  (interactive)
-  (next-line 5))
-
-(defun my/back-5-lines()
-  "Move cursor up 5 lines."
-  (interactive)
-  (previous-line 5))
-
-
 ;; taken from https://emacs.stackexchange.com/a/3334
 (defvar my/killed-file-list nil
   "List of recently killed files.")
 
 (defun my/add-file-to-killed-file-list ()
-  "If buffer is associated with a file name, add that file to the
-`killed-file-list' when killing the buffer."
+  "If buffer is associated with a file name, add that file to the `killed-file-list' when killing the buffer."
   (when buffer-file-name
     (push buffer-file-name my/killed-file-list)))
 
@@ -132,4 +117,16 @@
   (interactive)
   (let ((day (downcase (format-time-string "%a")))
         (month (upcase (format-time-string "%b"))))
-    (insert (concat (format-time-string "%a %d-") month (format-time-string "-%Y")))))
+    (insert (concat
+             (format-time-string "%a %d-")
+             month
+             (format-time-string "-%Y")))))
+
+(defun my/save-and-kill-buffer ()
+  "Before killing a buffer, ask to save it if it's unmodified."
+  (interactive)
+  (if (buffer-modified-p)
+      (if (yes-or-no-p "Save this buffer before killing it?")
+          (save-buffer)
+        (kill-this-buffer))
+    (kill-this-buffer)))

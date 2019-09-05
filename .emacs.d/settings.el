@@ -6,6 +6,7 @@
 (delete-selection-mode 1)
 (desktop-save-mode 1) ; remember last desktop settings
 (display-time) ; show time in mode line
+(electric-pair-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p) ; y/n instead of yes/no
 (global-auto-revert-mode t)
 (global-hl-line-mode 1) ; highlight current line
@@ -16,11 +17,9 @@
 (recentf-mode 1)
 (show-paren-mode t)
 (size-indication-mode t)
-(transient-mark-mode 1)	; highlight text selections
+(transient-mark-mode 1)     ; highlight text selections
 (tool-bar-mode -1)
 (whitespace-mode 1)
-
-(unless (display-graphic-p)  (electric-pair-mode 1)) ; use electic-pair-mode in
 
 (setq-default cursor-type 'bar
               major-mode 'text-mode ; default new buffers to text mode
@@ -45,6 +44,11 @@
 (setq recentf-max-saved-items 50)
 (setq sentence-end-double-space nil) ; sentence ends in single space
 
+;; use 4 spaces instead of tabs
+(setq-default tab-width 4
+              indent-tabs-mode nil)
+;; (setq-indent-line-function 'insert-tab)
+
 ;; show full file path in frame title
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
@@ -55,7 +59,6 @@
 (setq scroll-margin 0
       scroll-conservatively 100000000
       scroll-preserve-screen-position 1)
-
 
 ;; file backups
 (setq backup-directory-alist '(("." . "~/.emacs.backup"))

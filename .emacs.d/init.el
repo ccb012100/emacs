@@ -6,7 +6,8 @@
 (setq custom-file (make-temp-file "emacs-custom"))
 
 ;; set default window size (desktop-save-mode will override this)
-(when (or window-system (daemonp)) (setq default-frame-alist '( (width . 120) (height . 80) )))
+(when (or window-system (daemonp))
+  (setq default-frame-alist '( (width . 120) (height . 80) )))
 
 ;; confirm kill if emacs is started by non-deamon mode
 (if (daemonp) nil (setq confirm-kill-emacs 'y-or-n-p))
@@ -34,5 +35,6 @@
 (my/set-theme-dark)
 (switch-to-buffer "*scratch*") ; initial buffer
 
-;; since this is the last line, if the scratch buffer shows the default message then the .emacs file didn't load completely
+;; Since this is the last line, if the scratch buffer still shows the default
+;; message after loading, then we know that this file didn't load completely.
 (setq initial-scratch-message ";; *init scratch buffer*\n\n")

@@ -17,13 +17,14 @@
 (global-set-key (kbd "<home>") 'beginning-of-line)
 
 (global-set-key (kbd "C-k b") 'eval-buffer)
-(global-set-key (kbd "C-k d") 'my/insert-current-date)
 (global-set-key (kbd "C-k g") 'goto-line)
 (global-set-key (kbd "C-k C-k") 'kill-region) ; cut
 (global-set-key (kbd "C-k j") 'join-lines)
 (global-set-key (kbd "C-k l") 'avy-copy-line)
 (global-set-key (kbd "C-k m") 'set-mark-command)
 (global-set-key (kbd "C-k s") 'sort-lines)
+(global-set-key (kbd "C-k u") 'untabify)
+(global-set-key (kbd "C-k w") 'whitespace-mode) ; toggle whitespace-mode
 
 (global-set-key (kbd "C-x C-/") 'comment-region) ; paste
 (global-set-key (kbd "C-x C-j") 'recentf-open-files)
@@ -33,7 +34,6 @@
 (global-set-key (kbd "C-.") 'redo)
 (global-set-key (kbd "C-;") 'kill-line) ; delete from cursor to EOL
 (global-set-key (kbd "C-,") 'repeat)
-(global-set-key (kbd "C-j") 'my/join-lines)
 (global-set-key (kbd "C-l") 'kill-whole-line)
 (global-set-key (kbd "C-o") 'move-beginning-of-line)
 (global-set-key (kbd "C-t") 'set-mark-command)
@@ -43,20 +43,19 @@
 (global-set-key (kbd "M-p") 'scroll-down-line)
 (global-set-key (kbd "M-w") 'mode-line-other-buffer) ; switch to previous buffer
 
-;;;
-;;; bound to custom/package functions
-;;;
-(global-set-key [f9] 'my/set-theme-dark) ; defined in ~/.emacs.d/defuns.el
-(global-set-key [f10] 'my/set-theme-light) ; defined in ~/.emacs.d/defuns.el
-
+;;
+;; bind to custom functions defined in defuns.el
+;;
 (global-set-key (kbd "C-<return>") 'my/new-line-below)
 
-(global-set-key (kbd "C-k C-d") 'my/reformat-document)
-(global-set-key (kbd "C-k k") 'my/my-kill-ring-save) ; copy
+(global-set-key (kbd "C-j") 'my/join-lines)
 (global-set-key (kbd "C-w") 'my/select-word-under-cursor)
 
-(global-set-key (kbd "C-M-n") 'my/forward-5-lines)
-(global-set-key (kbd "C-M-p") 'my/back-5-lines)
+(global-set-key (kbd "C-k C-d") 'my/reformat-document)
+(global-set-key (kbd "C-k d") 'my/insert-current-date)
+(global-set-key (kbd "C-k k") 'my/kill-ring-save-modified) ; copy
+(global-set-key (kbd "C-x k") 'my/save-and-kill-buffer)
+
 (global-set-key (kbd "C-M-t") 'my/reopen-killed-file)
 
 (global-set-key (kbd "M-<return>") 'my/new-line-below)
