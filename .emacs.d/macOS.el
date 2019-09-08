@@ -1,6 +1,6 @@
-;;;
-;;; specific settings for MAC OS
-;;;
+;;;; specific settings for MAC OS
+;;;; located at ~/.emacs.d/macOS.el
+
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'meta)

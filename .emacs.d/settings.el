@@ -1,29 +1,33 @@
-;;;
-;;; EMACS SETTINGS
-;;;
+;;;; EMACS SETTINGS
+;;;; located in ~/.emacs.d/settings.el
 (blink-cursor-mode t)
 (column-number-mode t)
 (delete-selection-mode 1)
-(desktop-save-mode 1) ; remember last desktop settings
-(display-time) ; show time in mode line
+(desktop-save-mode 1)                   ; remember last desktop settings
+(display-time)                          ; show time in mode line
 (electric-pair-mode 1)
-(fset 'yes-or-no-p 'y-or-n-p) ; y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)           ; y/n instead of yes/no
 (global-auto-revert-mode t)
-(global-hl-line-mode 1) ; highlight current line
+(global-font-lock-mode t)               ; turn on syntax highlighting
+(global-hl-line-mode 1)                 ; highlight current line
 (global-linum-mode t)
-(global-visual-line-mode 1) ; line-wrap on word boundaries
+(global-visual-line-mode 1)             ; line-wrap on word boundaries
 (global-whitespace-mode)
 (menu-bar-mode t)
 (recentf-mode 1)
 (show-paren-mode t)
 (size-indication-mode t)
-(transient-mark-mode 1)     ; highlight text selections
+(transient-mark-mode 1)                 ; highlight text selections
 (tool-bar-mode -1)
 (whitespace-mode 1)
 
 (setq-default cursor-type 'bar
-              major-mode 'text-mode ; default new buffers to text mode
+              major-mode 'text-mode     ; default new buffers to text mode
               tab-width 4
+              indent-tabs-mode nil)
+
+;; use 4 spaces instead of tabs
+(setq-default tab-width 4
               indent-tabs-mode nil)
 
 ;; set TLS version to fix bug in Emacs.
@@ -31,23 +35,19 @@
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq column-number-mode t)
-(setq custom-safe-themes t ); stop emacs from asking if it's ok to load themes
-(setq delete-by-moving-to-trash t ); move deleted files to trash
-(setq echo-keystrokes 0.1) ; show unfinished keystrokes in mini-buffer
-(setq gc-cons-threshold 50000000 ); increase threshold to 50 MB
+(setq custom-safe-themes t )            ; don't prompt to load themes
+(setq delete-by-moving-to-trash t )     ; move deleted files to trash
+(setq echo-keystrokes 0.1)              ; show unfinished keystrokes in mini-buf
+(setq gc-cons-threshold 50000000 )      ; increase threshold to 50 MB
 (setq ido-enable-flex-matching t)
 (setq inhibit-startup-screen t)
-(setq large-file-warning-threshold 100000000) ; increase threshold to 100MB
+(setq
+ large-file-warning-threshold 100000000); increase threshold to 100MB
 (setq line-number-mode t)
-(setq ns-pop-up-frames nil ); always open in same frame
+(setq ns-pop-up-frames nil )            ; always open in same frame
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
-(setq sentence-end-double-space nil) ; sentence ends in single space
-
-;; use 4 spaces instead of tabs
-(setq-default tab-width 4
-              indent-tabs-mode nil)
-;; (setq-indent-line-function 'insert-tab)
+(setq sentence-end-double-space nil)   ; sentence ends in single space
 
 ;; show full file path in frame title
 (setq frame-title-format
@@ -75,5 +75,16 @@
       history-delete-duplicates t
       savehist-save-minibuffer-history 1
       savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+(setq vc-make-backup-files t)   ; also backup files in version control
 
-;; use hs-mode to fold/unfold code in Javascript/JSON
+;; Save point position between sessions
+;; from http://whattheemacsd.com/init.el-03.html
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+;; customize white-space-mode to > 80 chars/line for some modes
+(add-hook
+ 'text-mode-hook
+ 'markdown-mode-hook
+ (lambda () (setq-local whitespace-line-column 120)))

@@ -1,3 +1,6 @@
+;;;; Emacs init file (same as ~/.emacs file)
+;;;; located at ~/.emacs.d/init.el
+
 ;; start emacs server
 (require 'server)
 (unless (server-running-p) (server-start))
