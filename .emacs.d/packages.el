@@ -3,9 +3,9 @@
 
 ;;; SETUP
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpagnu" . "https://elpa.gnu.org/packages/") t)
+(require #'package)
+(add-to-list #'package-archives #'("melpa" . "https://melpa.org/packages/") t)
+(add-to-list #'package-archives #'("melpagnu" . "https://elpa.gnu.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -37,7 +37,7 @@
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
-  :init (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l)))
+  :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
 (use-package company
   :bind (:map company-active-map
@@ -45,7 +45,7 @@
                ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode)
   :init (setq company-idle-delay 0.2) ;; decrease delay
-  (setq company-global-modes '(not text-mode markdown-mode)))
+  (setq company-global-modes #'(not text-mode markdown-mode)))
 
 (use-package drag-stuff
   :init (drag-stuff-global-mode 1) (drag-stuff-mode t)
@@ -92,8 +92,8 @@
   (unbind-key "C-k" paredit-mode-map)
   (unbind-key "<M-up>" paredit-mode-map)
   (unbind-key "<M-down>" paredit-mode-map)
-  (bind-key "C-c b" 'paredit-splice-sexp-killing-backward paredit-mode-map)
-  (bind-key "C-c f" 'paredit-splice-sexp-killing-forward paredit-mode-map)
+  (bind-key "C-c b" #'paredit-splice-sexp-killing-backward paredit-mode-map)
+  (bind-key "C-c f" #'paredit-splice-sexp-killing-forward paredit-mode-map)
   :bind ("C-;" . paredit-kill))
 
 (use-package undo-tree
@@ -101,7 +101,7 @@
   :config (progn (global-undo-tree-mode)))
 
 (use-package vimrc-mode
-  :init (add-to-list 'auto-mode-alist '("\\.vim\\(rc\\)?\\'" . vimrc-mode)))
+  :init (add-to-list #'auto-mode-alist #'("\\.vim\\(rc\\)?\\'" . vimrc-mode)))
 
 (use-package which-key
   :bind ("C-h j" . which-key-show-major-mode)
@@ -110,5 +110,5 @@
   (which-key-setup-minibuffer)
   :config
   (setq which-key-max-description-length 80)
-  (setq which-key-popup-type 'side-window)
-  (setq which-key-side-window-location '(right bottom)))
+  (setq which-key-popup-type #'side-window)
+  (setq which-key-side-window-location #'(right bottom)))

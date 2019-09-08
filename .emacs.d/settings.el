@@ -6,7 +6,7 @@
 (desktop-save-mode 1)                   ; remember last desktop settings
 (display-time)                          ; show time in mode line
 (electric-pair-mode 1)
-(fset 'yes-or-no-p 'y-or-n-p)           ; y/n instead of yes/no
+(fset #'yes-or-no-p #'y-or-n-p)           ; y/n instead of yes/no
 (global-auto-revert-mode t)
 (global-font-lock-mode t)               ; turn on syntax highlighting
 (global-hl-line-mode 1)                 ; highlight current line
@@ -21,8 +21,8 @@
 (tool-bar-mode -1)
 (whitespace-mode 1)
 
-(setq-default cursor-type 'bar
-              major-mode 'text-mode     ; default new buffers to text mode
+(setq-default cursor-type #'bar
+              major-mode #'text-mode     ; default new buffers to text mode
               tab-width 4
               indent-tabs-mode nil)
 
@@ -51,7 +51,7 @@
 
 ;; show full file path in frame title
 (setq frame-title-format
-      '((:eval (if (buffer-file-name)
+      #'((:eval (if (buffer-file-name)
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
@@ -61,7 +61,7 @@
       scroll-preserve-screen-position 1)
 
 ;; file backups
-(setq backup-directory-alist '(("." . "~/.emacs.backup"))
+(setq backup-directory-alist #'(("." . "~/.emacs.backup"))
       backup-by-copying t
       delete-old-versions t
       kept-new-versions 1000
@@ -74,17 +74,17 @@
 (setq history-length 1
       history-delete-duplicates t
       savehist-save-minibuffer-history 1
-      savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+      savehist-additional-variables #'(kill-ring search-ring regexp-search-ring))
 (setq vc-make-backup-files t)   ; also backup files in version control
 
 ;; Save point position between sessions
 ;; from http://whattheemacsd.com/init.el-03.html
-(require 'saveplace)
+(require #'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
 ;; customize white-space-mode to > 80 chars/line for some modes
 (add-hook
- 'text-mode-hook
- 'markdown-mode-hook
+ #'text-mode-hook
+ #'markdown-mode-hook
  (lambda () (setq-local whitespace-line-column 120)))

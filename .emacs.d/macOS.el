@@ -1,15 +1,15 @@
 ;;;; specific settings for MAC OS
 ;;;; located at ~/.emacs.d/macOS.el
 
-(when (eq system-type 'darwin)
-  (setq mac-option-modifier 'meta)
-  (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char) ; maps fn-delete to right-delete
-  (set-face-attribute 'default nil :family "mononoki" :height 120) ; set font
+(when (eq system-type #'darwin)
+  (setq mac-option-modifier #'meta)
+  (setq mac-command-modifier #'meta)
+  (global-set-key [kp-delete] #'delete-char) ; maps fn-delete to right-delete
+  (set-face-attribute #'default nil :family "mononoki" :height 120) ; set font
 
   ;; ITERM2 MOUSE SUPPORT
   (unless window-system
-    (require 'mouse)
+    (require #'mouse)
     (xterm-mouse-mode t)
     (defun track-mouse (e)) 
     (setq mouse-sel-mode t))
@@ -23,5 +23,5 @@
       (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
         (process-send-string proc text)
         (process-send-eof proc))))
-  (setq interprogram-cut-function 'copy-to-osx)
-  (setq interprogram-paste-function 'paste-from-osx))
+  (setq interprogram-cut-function #'copy-to-osx)
+  (setq interprogram-paste-function #'paste-from-osx))

@@ -2,7 +2,7 @@
 ;;;; located at ~/.emacs.d/init.el
 
 ;; start emacs server
-(require 'server)
+(require #'server)
 (unless (server-running-p) (server-start))
 
 ;; for custom settings set by emacs - don't want these polluting .emacs file
@@ -10,10 +10,10 @@
 
 ;; set default window size (desktop-save-mode will override this)
 (when (or window-system (daemonp))
-  (setq default-frame-alist '( (width . 120) (height . 80) )))
+  (setq default-frame-alist #'( (width . 120) (height . 80) )))
 
 ;; confirm kill if emacs is started by non-deamon mode
-(if (daemonp) nil (setq confirm-kill-emacs 'y-or-n-p))
+(if (daemonp) nil (setq confirm-kill-emacs #'y-or-n-p))
 
 ;; macOS settings
 (setq macos-file "~/.emacs.d/macOS.el")

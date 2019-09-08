@@ -3,8 +3,8 @@
 (defun my/apply-company-theme()
   "Apply theming to company-mode"
   ;; taken from https://www.emacswiki.org/emacs/CompanyMode
-  (require 'color)
-  (let ((bg (face-attribute 'default :background)))
+  (require #'color)
+  (let ((bg (face-attribute #'default :background)))
     (custom-set-faces
      `(company-tooltip
        ((t (:inherit default :background ,(color-lighten-name bg 2)))))
@@ -22,7 +22,7 @@ With negative N, comment out original line and use the absolute value."
     (save-excursion
       (let ((text (if use-region ; Get region if active, otherwise line
                       (buffer-substring (region-beginning) (region-end))
-                    (prog1 (thing-at-point 'line)
+                    (prog1 (thing-at-point #'line)
                       (end-of-line)
                       ;; Go to beginning of next line, or make a new one
                       (if (< 0 (forward-line 1)) (newline))))))
@@ -44,7 +44,7 @@ With negative N, comment out original line and use the absolute value."
     (pp-eval-last-sexp prefix)))
 
 (defun my/insert-current-date ()
-  "Insert current date in format 'Day DD-MM-YYYY' (ex. 'Thu 23-AUG-2019')"
+  "Insert current date in format #'Day DD-MM-YYYY' (ex. #'Thu 23-AUG-2019')"
   (interactive)
   (let ((month (upcase (format-time-string "%b"))))
     (insert (concat
@@ -66,8 +66,8 @@ With negative N, comment out original line and use the absolute value."
 
 ;; modify kill-region and kill-ring-save to act on line if no text is selected
 ;; see: https://www.emacswiki.org/emacs/WholeLineOrRegion
-(put 'kill-region 'interactive-form
-     '(interactive
+(put #'kill-region #'interactive-form
+     #'(interactive
        (if (use-region-p)
            (list (region-beginning) (region-end))
          (list (line-beginning-position) (line-beginning-position 2)))))
@@ -76,7 +76,7 @@ With negative N, comment out original line and use the absolute value."
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end) nil)
                  (list (line-beginning-position)
-                       (line-beginning-position 2) 'flash)))
+                       (line-beginning-position 2) #'flash)))
   (kill-ring-save beg end)
   (when flash
     (save-excursion
@@ -84,7 +84,7 @@ With negative N, comment out original line and use the absolute value."
           (goto-char end)
         (goto-char beg))
       (sit-for blink-matching-delay))))
-(global-set-key [remap kill-ring-save] 'my-kill-ring-save)
+(global-set-key [remap kill-ring-save] #'my-kill-ring-save)
 
 (defun my/load-init-file()
   "Reload the init.el file."
@@ -94,11 +94,11 @@ With negative N, comment out original line and use the absolute value."
 ;; disables all custom themes before loading (enabling) another one.
 ;; from: https://emacs.stackexchange.com/a/3114
 (defadvice load-theme (before theme-dont-propagate activate)
-  (mapc 'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 (defun my/mark-word-under-cursor ()
   "Mark the word the cursor is on.
-In Visual Studio, this is called 'Select Word Under Cursor'"
+In Visual Studio, this is called #'Select Word Under Cursor'"
   (interactive)
   (let ((bnd (mouse-start-end (point) (point) 1)))
     (goto-char (car bnd))
@@ -150,9 +150,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 (defun my/reformat-document ()
   "Indent document.
-Similar to 'Reformat Document' document in Visual Studio."
+Similar to #'Reformat Document' document in Visual Studio."
   (interactive)
-  (unless (or (equal major-mode 'text-mode) (equal major-mode 'markdown-mode))
+  (unless (or (equal major-mode #'text-mode) (equal major-mode #'markdown-mode))
     (save-excursion (indent-region (point-min) (point-max) nil))))
 
 (defun my/rename-current-buffer-file ()
@@ -162,15 +162,15 @@ Similar to 'Reformat Document' document in Visual Studio."
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
     (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
+        (error "Buffer #'%s' is not visiting a file!" name)
       (let ((new-name (read-file-name "New name: " filename)))
         (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
+            (error "A buffer named #'%s' already exists!" new-name)
           (rename-file filename new-name 1)
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
+          (message "File #'%s' successfully renamed to #'%s'"
                    name (file-name-nondirectory new-name)))))))
 
 (defun my/rotate-windows ()
@@ -198,15 +198,15 @@ Similar to 'Reformat Document' document in Visual Studio."
 (defun my/set-theme-dark()
   "Load dark theme."
   (interactive)
-  (sml/apply-theme 'dark)
-  (load-theme 'gruvbox-dark-medium)
+  (sml/apply-theme #'dark)
+  (load-theme #'gruvbox-dark-medium)
   (my/apply-company-theme))
 
 (defun my/set-theme-light()
   "Load light theme."
   (interactive)
-  (sml/apply-theme 'light) 
-  (load-theme 'gruvbox-light-medium)
+  (sml/apply-theme #'light) 
+  (load-theme #'gruvbox-light-medium)
   (my/apply-company-theme))
 
 (defun my/save-and-kill-buffer ()
@@ -229,4 +229,4 @@ Similar to 'Reformat Document' document in Visual Studio."
   (when buffer-file-name (push buffer-file-name my/killed-file-list)))
 
 ;; add buffer file to killed-file-list every time kill-buffer is called
-(add-hook 'kill-buffer-hook #'my/add-file-to-killed-file-list)
+(add-hook #'kill-buffer-hook #'my/add-file-to-killed-file-list)
