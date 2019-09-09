@@ -15,7 +15,8 @@
     (setq mouse-sel-mode t))
 
   ;; integrate copy/paste with macOS clipboard
-  ;; taken from https://gist.github.com/the-kenny with the functions modified to make sense
+  ;; taken from https://gist.github.com/the-kenny
+  ;; I modified the functions to make sense
   (defun paste-from-osx ()
     (shell-command-to-string "pbpaste"))
   (defun copy-to-osx (text &optional push)
