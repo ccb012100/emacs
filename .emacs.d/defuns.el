@@ -68,9 +68,9 @@ With negative N, comment out original line and use the absolute value."
 ;; see: https://www.emacswiki.org/emacs/WholeLineOrRegion
 (put #'kill-region #'interactive-form
      #'(interactive
-       (if (use-region-p)
-           (list (region-beginning) (region-end))
-         (list (line-beginning-position) (line-beginning-position 2)))))
+        (if (use-region-p)
+            (list (region-beginning) (region-end))
+          (list (line-beginning-position) (line-beginning-position 2)))))
 (defun my/kill-ring-save-modified (beg end flash)
   "Modified version of kill-ring-save. Acts on line if no text is selected"
   (interactive (if (use-region-p)
@@ -199,14 +199,14 @@ Similar to #'Reformat Document' document in Visual Studio."
   "Load dark theme."
   (interactive)
   (sml/apply-theme #'dark)
-  (load-theme #'gruvbox-dark-medium)
+  (load-theme #'gruvbox-dark-hard)
   (my/apply-company-theme))
 
 (defun my/set-theme-light()
   "Load light theme."
   (interactive)
   (sml/apply-theme #'light) 
-  (load-theme #'gruvbox-light-medium)
+  (load-theme #'gruvbox-light-soft)
   (my/apply-company-theme))
 
 (defun my/save-and-kill-buffer ()
@@ -214,8 +214,9 @@ Similar to #'Reformat Document' document in Visual Studio."
   (interactive)
   (if (buffer-modified-p)
       (if (yes-or-no-p "Save this buffer before killing it?")
-          ((save-buffer)
-           (kill-buffer))
+          (progn
+            (save-buffer)
+            (kill-buffer))
         (my/kill-buffer-volatile))
     (kill-this-buffer)))
 
