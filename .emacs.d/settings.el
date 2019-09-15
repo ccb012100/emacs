@@ -1,6 +1,6 @@
 ;;;; EMACS SETTINGS
 ;;;; located in ~/.emacs.d/settings.el
-(blink-cursor-mode t)
+(blink-cursor-mode 0)
 (column-number-mode t)
 (delete-selection-mode 1)
 (desktop-save-mode 1)           ; remember last desktop settings
@@ -8,18 +8,21 @@
 (electric-pair-mode 1)
 (fset #'yes-or-no-p #'y-or-n-p) ; y/n instead of yes/no
 (global-auto-revert-mode t)
-n(global-font-lock-mode t)      ; turn on syntax highlighting
+(global-font-lock-mode t)       ; turn on syntax highlighting
 (global-hl-line-mode 1)         ; highlight current line
 (global-linum-mode t)
 (global-visual-line-mode 1)     ; line-wrap on word boundaries
 (global-whitespace-mode)
 (menu-bar-mode t)
-(recentf-mode 1)
 (show-paren-mode t)
 (size-indication-mode t)
 (transient-mark-mode 1)         ; highlight text selections
 (tool-bar-mode -1)
 (whitespace-mode 1)
+
+;; Don't show native OS scroll bars for buffers because they're redundant
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
 
 (setq-default cursor-type #'bar)
 
@@ -31,21 +34,22 @@ n(global-font-lock-mode t)      ; turn on syntax highlighting
 ;; See: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
-(setq major-mode #'text-mode)                   ; use text mode for new buffers
+(setq major-mode #'text-mode)       ; use text mode for new buffers
 (setq column-number-mode t)
-(setq create-lockfiles nil)                     ; dont need lockfiles
-(setq custom-safe-themes t )                    ; don't prompt to load themes
-(setq delete-by-moving-to-trash t )             ; move deleted files to trash
-(setq echo-keystrokes 0.1)                      ; show unfinished keystrokes
-(setq gc-cons-threshold 50000000 )              ; increase threshold to 50 MB
+(setq create-lockfiles nil)         ; dont need lockfiles
+(setq custom-safe-themes t )        ; don't prompt to load themes
+(setq delete-by-moving-to-trash t ) ; move deleted files to trash
+(setq echo-keystrokes 0.1)          ; show unfinished keystrokes
+(setq gc-cons-threshold 50000000 )  ; increase threshold to 50 MB
 (setq ido-enable-flex-matching t)
 (setq inhibit-startup-screen t)
-(setq large-file-warning-threshold 100000000)   ; increase threshold to 100MB
+(setq large-file-warning-threshold 100000000) ; increase threshold to 100MB
 (setq line-number-mode t)
-(setq ns-pop-up-frames nil)                     ; always open in same frame
-(setq recentf-max-menu-items 50)
-(setq recentf-max-saved-items 50)
-(setq sentence-end-double-space nil)            ; sentence ends in single space
+(setq ns-pop-up-frames nil)         ; always open in same frame
+(setq save-interprogram-paste-before-kill t)
+(setq select-enable-clipboard t)    ; integrate with OS clipboard
+(setq select-enable-primary t)      ; cut/paste uses primary selection
+(setq sentence-end-double-space nil); sentence ends in single space
 
 ;; show full file path in frame title
 (setq frame-title-format
@@ -75,11 +79,28 @@ n(global-font-lock-mode t)      ; turn on syntax highlighting
       vc-make-backup-files t)   ; also backup files in version control
 (savehist-mode 1)
 
+;; Shows all options when running apropos. For more info,
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Apropos.html
+(setq apropos-do-all t)
+
+;; Mouse yank commands yank at point instead of at click.
+(setq mouse-yank-at-point t)
+
 ;; Save point position between sessions
 ;; from http://whattheemacsd.com/init.el-03.html
 (require #'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+;; save list of recently visited files
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 50)
+(setq recentf-max-saved-items 50)
+
+;; better method of giving buffers unique names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;; customize white-space-mode to > 80 chars/line for some modes
 (add-hook

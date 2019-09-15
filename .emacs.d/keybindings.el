@@ -45,9 +45,10 @@
 (global-set-key (kbd "C-t") #'set-mark-command)
 (global-set-key (kbd "C-u") #'backward-word)
 
-(global-set-key (kbd "M-:") #'pp-eval-expression)     ; pretty-print results
+(global-set-key (kbd "M-:") #'pp-eval-expression)    ; pretty-print results
 (global-set-key (kbd "M-n") #'scroll-up-line)
 (global-set-key (kbd "M-p") #'scroll-down-line)
+(global-set-key (kbd "M-q") #'universal-argument)
 (global-set-key (kbd "M-w") #'mode-line-other-buffer) ; open previous buffer
 
 ;;; windmove package
@@ -66,7 +67,7 @@
 
 (global-set-key (kbd "M-<return>") #'my/new-line-below)
 
-(global-set-key (kbd "M-t") #'my/reopen-killed-file) ; <SHIFT> + <COMMAND> + t
+(global-set-key (kbd "M-T") #'my/reopen-killed-file) ; <SHIFT> + <COMMAND> + t
 (global-set-key (kbd "C-M-<return>") #'my/open-new-line-above)
 
 (global-set-key (kbd "C-<return>") #'my/open-new-line-below)

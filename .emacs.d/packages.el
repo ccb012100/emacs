@@ -2,10 +2,10 @@
 ;;;; located in ~/.emacs.d/packages.el
 
 ;;; SETUP
-
 (require #'package)
 (add-to-list #'package-archives #'("melpa" . "https://melpa.org/packages/") t)
-(add-to-list #'package-archives #'("melpagnu" . "https://elpa.gnu.org/packages/") t)
+(add-to-list #'package-archives
+             #'("melpagnu" . "https://elpa.gnu.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -16,6 +16,7 @@
 (setq use-package-always-ensure t)
 
 ;;; PACKAGES
+(use-package aggressive-indent :init (global-aggressive-indent-mode t))
 (use-package helm-descbinds :after helm :bind ("C-h b" . helm-descbinds))
 (use-package helm-swoop :after helm :bind ("C-k f" . helm-swoop))
 (use-package hlinum :init (hlinum-activate))
@@ -29,26 +30,27 @@
 (use-package smartparens)
 (use-package thingatpt)
 (use-package windmove)
-(use-package yaml-mode)
-
-(use-package beacon
-  :init (beacon-mode 1)
-  :config (setq beacon-color "green"))
+(use-package yaml-mode :mode "\\.yml\\'")
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
+
+(use-package beacon
+  :init (beacon-mode 1)
+  :config (setq beacon-color "green"))
 
 (use-package company
   :bind (:map company-active-map
               (("C-n" . company-select-next-or-abort)
                ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode)
-  :init (setq company-idle-delay 0.2) ;; decrease delay
+  :init (setq company-idle-delay 1) ;; increase delay
   (setq company-global-modes #'(not text-mode markdown-mode)))
 
 (use-package drag-stuff
-  :init (drag-stuff-global-mode 1) (drag-stuff-mode t)
+  :init (drag-stuff-global-mode 1)
+  (drag-stuff-mode t)
   :hook (after-init . drag-stuff-define-keys))
 
 (use-package helm
@@ -65,7 +67,8 @@
          ("<tab>" . helm-execute-persistent-action)
          :map helm-find-files-map
          ("C-<backspace>" . helm-find-files-up-one-level))
-  :config (helm-mode 1) (ido-mode -1)
+  :config (helm-mode 1)
+  (ido-mode -1)
   (setq helm-split-window-inside-p t
         helm-move-to-line-cycle-in-source t
         helm-mode-fuzzy-match t
@@ -79,8 +82,7 @@
   :init (setq markdown-command "pandoc"))
 
 (use-package origami
-  :bind (
-         ("C-k o t" . origami-forward-toggle-node)
+  :bind (("C-k o t" . origami-forward-toggle-node)
          ("C-k o u" . origami-previous-fold)
          ("C-k o i" . origami-forward-fold)
          ("C-k o p" . origami-backward-fold-same-level)
@@ -88,34 +90,17 @@
          ("C-k o c" . origami-close-node))
   :init (setq global-origami-mode t))
 
-(use-package paredit
-  :init (enable-paredit-mode)
-  (unbind-key "C-k" paredit-mode-map)
-  (unbind-key "<M-up>" paredit-mode-map)
-  (unbind-key "<M-down>" paredit-mode-map)
-  (bind-key "C-c b" #'paredit-splice-sexp-killing-backward paredit-mode-map)
-  (bind-key "C-c f" #'paredit-splice-sexp-killing-forward paredit-mode-map)
-  :bind ("C-;" . paredit-kill))
-
 (use-package undo-tree
   :diminish undo-tree-mode
-  :config (progn (global-undo-tree-mode)))
+  :config (global-undo-tree-mode))
 
 (use-package vimrc-mode
   :init (add-to-list #'auto-mode-alist #'("\\.vim\\(rc\\)?\\'" . vimrc-mode)))
 
 (use-package which-key
   :bind ("C-h j" . which-key-show-major-mode)
-  :init
-  (which-key-mode)
+  :init (which-key-mode)
   (which-key-setup-minibuffer)
-  :config
-  (setq which-key-max-description-length 80)
+  :config (setq which-key-max-description-length 80)
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))
-
-;; CLOJURE
-(use-package clojure-mode)
-(use-package clojure-mode-extra-font-locking)
-(use-package helm-clojuredocs)
-(use-package cljr-helm)

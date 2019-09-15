@@ -12,17 +12,4 @@
     (require #'mouse)
     (xterm-mouse-mode t)
     (defun track-mouse (e)) 
-    (setq mouse-sel-mode t))
-
-  ;; integrate copy/paste with macOS clipboard
-  ;; taken from https://gist.github.com/the-kenny
-  (defun paste-from-osx ()
-  ;; I modified the functions to make sense
-    (shell-command-to-string "pbpaste"))
-  (defun copy-to-osx (text &optional push)
-    (let ((process-connection-type nil))
-      (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-        (process-send-string proc text)
-        (process-send-eof proc))))
-  (setq interprogram-cut-function #'copy-to-osx)
-  (setq interprogram-paste-function #'paste-from-osx))
+    (setq mouse-sel-mode t)))
