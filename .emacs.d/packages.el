@@ -16,7 +16,6 @@
 (setq use-package-always-ensure t)
 
 ;;; PACKAGES
-
 (use-package helm-descbinds :after helm :bind ("C-h b" . helm-descbinds))
 (use-package helm-swoop :after helm :bind ("C-k f" . helm-swoop))
 (use-package hlinum :init (hlinum-activate))
@@ -30,10 +29,11 @@
 (use-package smartparens)
 (use-package thingatpt)
 (use-package windmove)
+(use-package yaml-mode)
 
 (use-package beacon
   :init (beacon-mode 1)
-  :config (setq beacon-color "red"))
+  :config (setq beacon-color "green"))
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
@@ -55,6 +55,7 @@
   :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ("C-x b" . helm-buffers-list)
+         ("C-k C-o" . helm-buffers-list) ; less awkward that `C-x b`
          ("C-x m" . helm-mini)
          ("C-x r b" . helm-filtered-bookmarks)
          ("C-SPC" . helm-M-x)
@@ -112,3 +113,9 @@
   (setq which-key-max-description-length 80)
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))
+
+;; CLOJURE
+(use-package clojure-mode)
+(use-package clojure-mode-extra-font-locking)
+(use-package helm-clojuredocs)
+(use-package cljr-helm)

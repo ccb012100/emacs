@@ -48,7 +48,7 @@
 (global-set-key (kbd "M-:") #'pp-eval-expression)     ; pretty-print results
 (global-set-key (kbd "M-n") #'scroll-up-line)
 (global-set-key (kbd "M-p") #'scroll-down-line)
-(global-set-key (kbd "M-w") #'mode-line-other-buffer) ; switch to previous buffer
+(global-set-key (kbd "M-w") #'mode-line-other-buffer) ; open previous buffer
 
 ;;; windmove package
 ;; use arrows
@@ -66,7 +66,7 @@
 
 (global-set-key (kbd "M-<return>") #'my/new-line-below)
 
-(global-set-key (kbd "C-M-t") #'my/reopen-killed-file)
+(global-set-key (kbd "M-t") #'my/reopen-killed-file) ; <SHIFT> + <COMMAND> + t
 (global-set-key (kbd "C-M-<return>") #'my/open-new-line-above)
 
 (global-set-key (kbd "C-<return>") #'my/open-new-line-below)

@@ -16,8 +16,8 @@
 
   ;; integrate copy/paste with macOS clipboard
   ;; taken from https://gist.github.com/the-kenny
-  ;; I modified the functions to make sense
   (defun paste-from-osx ()
+  ;; I modified the functions to make sense
     (shell-command-to-string "pbpaste"))
   (defun copy-to-osx (text &optional push)
     (let ((process-connection-type nil))
