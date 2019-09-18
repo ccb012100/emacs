@@ -37,7 +37,7 @@
 
 ;; load Clojure configurations
 (setq clojure-config-file "~/.emacs.d/clojure.el")
-;; (load-file clojure-config-file)
+(load-file clojure-config-file)
 
 (my/set-theme-dark)
 (switch-to-buffer "*scratch*") ; initial buffer
