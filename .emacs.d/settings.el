@@ -12,7 +12,6 @@
 (global-hl-line-mode 1)         ; highlight current line
 (global-linum-mode t)
 (global-visual-line-mode 1)     ; line-wrap on word boundaries
-(global-whitespace-mode)
 (menu-bar-mode t)
 (show-paren-mode t)
 (size-indication-mode t)

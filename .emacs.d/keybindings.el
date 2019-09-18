@@ -16,11 +16,9 @@
 (global-set-key (kbd "<end>") #'end-of-line)
 (global-set-key (kbd "<home>") #'beginning-of-line)
 
-(global-set-key (kbd "C-k b") #'eval-buffer)
-(global-set-key (kbd "C-k g") #'goto-line)
+(global-set-key (kbd "C-k e") #'eval-buffer)
 (global-set-key (kbd "C-k i") #'indent-for-comment)
 (global-set-key (kbd "C-k j") #'join-lines)
-(global-set-key (kbd "C-k l") #'avy-copy-line)
 (global-set-key (kbd "C-k m") #'set-mark-command)
 (global-set-key (kbd "C-k s") #'sort-lines)
 (global-set-key (kbd "C-k u") #'untabify)
@@ -58,10 +56,10 @@
 (global-set-key (kbd "C-c <up>")    #'windmove-up)
 (global-set-key (kbd "C-c <down>")  #'windmove-down)
 ;; use vi key bindings
-(global-set-key (kbd "C-c h")  #'windmove-left)
+(global-set-key (kbd "C-c h") #'windmove-left)
 (global-set-key (kbd "C-c l") #'windmove-right)
-(global-set-key (kbd "C-c k")    #'windmove-up)
-(global-set-key (kbd "C-c j")  #'windmove-down)
+(global-set-key (kbd "C-c k") #'windmove-up)
+(global-set-key (kbd "C-c j") #'windmove-down)
 
 ;;; bind to custom functions defined in defuns.el
 
@@ -77,13 +75,12 @@
 (global-set-key (kbd "C-w") #'my/mark-word-under-cursor)
 
 (global-set-key (kbd "C-k C-d") #'my/reformat-document)
+(global-set-key (kbd "C-k C-l") #'my/kill-ring-save-modified) ; copy
 (global-set-key (kbd "C-k d") #'my/insert-current-date)
-(global-set-key (kbd "C-k k") #'my/kill-ring-save-modified) ; copy
 (global-set-key (kbd "C-k r") #'my/rotate-windows)
 
 (global-set-key (kbd "C-x k") #'my/save-and-kill-buffer)
 
-(add-hook
- #'emacs-lisp-mode-hook
- (lambda ()
-   (local-set-key (kbd "C-x C-e") #'my/eval-last-sexp-or-region)))
+(add-hook #'emacs-lisp-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-x C-e") #'my/eval-last-sexp-or-region)))

@@ -44,13 +44,9 @@ With negative N, comment out original line and use the absolute value."
     (pp-eval-last-sexp prefix)))
 
 (defun my/insert-current-date ()
-  "Insert current date in format #'Day DD-MM-YYYY' (ex. #'Thu 23-AUG-2019')"
+  "Insert current date in format 'Day MM-DD-YYYY' (example: Mon Sep-16-2019)"
   (interactive)
-  (let ((month (upcase (format-time-string "%b"))))
-    (insert (concat
-             (format-time-string "%a %d-")
-             month
-             (format-time-string "-%Y")))))
+  (insert (format-time-string "%a %m-%d-%Y")))
 
 (defun my/join-lines ()
   "Join line with next line."
@@ -199,7 +195,7 @@ Similar to #'Reformat Document' document in Visual Studio."
   "Load dark theme."
   (interactive)
   (sml/apply-theme #'dark)
-  (load-theme #'gruvbox-dark-hard)
+  (load-theme #'sanityinc-tomorrow-eighties)
   (my/apply-company-theme))
 
 (defun my/set-theme-light()
@@ -220,6 +216,19 @@ Similar to #'Reformat Document' document in Visual Studio."
         (my/kill-buffer-volatile))
     (kill-this-buffer)))
 
+(defun my/split-window-below-improved ()
+  "Split window vertically and switch the new window to other-buffer."
+  (interactive)
+  (split-window-below)
+  (set-window-buffer (next-window) (other-buffer)))
+
+(defun my/split-window-right-improved ()
+  "Split window horizontally and switch the new window to other-buffer."
+  (interactive)
+  (split-window-right)
+  (set-window-buffer (next-window) (other-buffer)))
+
+
 ;;; KILLED FILE LIST
 ;; taken from https://emacs.stackexchange.com/a/3334
 (defvar my/killed-file-list nil "List of recently killed files.")
@@ -231,3 +240,8 @@ Similar to #'Reformat Document' document in Visual Studio."
 
 ;; add buffer file to killed-file-list every time kill-buffer is called
 (add-hook #'kill-buffer-hook #'my/add-file-to-killed-file-list)
+(defun my/reopen-killed-file ()
+  "Reopen the most recently killed file, if one exists."
+  (interactive)
+  (when my/killed-file-list
+    (find-file (pop my/killed-file-list))))

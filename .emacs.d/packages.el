@@ -10,13 +10,14 @@
 
 (when (not package-archive-contents)
   (package-refresh-contents))
-
 (package-install-selected-packages)
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
 ;;; PACKAGES
 (use-package aggressive-indent :init (global-aggressive-indent-mode t))
+(use-package auto-package-update)
+(use-package gruvbox-theme)
 (use-package helm-descbinds :after helm :bind ("C-h b" . helm-descbinds))
 (use-package helm-swoop :after helm :bind ("C-k f" . helm-swoop))
 (use-package hlinum :init (hlinum-activate))
@@ -26,8 +27,10 @@
 (use-package magit)
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
 (use-package rainbow-mode :hook html-mode css-mode scss-mode)
+(use-package color-theme-sanityinc-tomorrow)
 (use-package smart-mode-line :init (sml/setup))
 (use-package smartparens)
+(use-package syslog-mode :mode "/var/log.*\\'")
 (use-package thingatpt)
 (use-package windmove)
 (use-package yaml-mode :mode "\\.yml\\'")
@@ -36,16 +39,19 @@
   :bind ("M-o" . ace-window)
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
-(use-package beacon
-  :init (beacon-mode 1)
-  :config (setq beacon-color "green"))
+(use-package avy
+  :bind (("C-'" . avy-goto-char-2)
+         ("C-k l" . avy-copy-line)
+         ("M-g M-g" . avy-goto-line)
+         :map isearch-mode-map
+         ("C-'" . avy-isearch)))
 
 (use-package company
   :bind (:map company-active-map
               (("C-n" . company-select-next-or-abort)
                ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode)
-  :init (setq company-idle-delay 1) ;; increase delay
+  :init (setq company-idle-delay 0) ;; no delay for suggestions
   (setq company-global-modes #'(not text-mode markdown-mode)))
 
 (use-package drag-stuff
