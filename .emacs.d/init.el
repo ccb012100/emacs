@@ -40,8 +40,5 @@
 (load-file clojure-config-file)
 
 (my/set-theme-dark)
-(switch-to-buffer "*scratch*") ; initial buffer
 
-;; Since this is the last line, if the scratch buffer still shows the default
-;; message after loading, then we know that this file didn't load completely.
-(setq initial-scratch-message ";; *init scratch buffer*\n\n")
+(kill-buffer "*scratch*") ; kill default scratch buffer

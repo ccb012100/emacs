@@ -146,7 +146,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 (defun my/reformat-document ()
   "Indent document.
-Similar to #'Reformat Document' document in Visual Studio."
+Similar to 'Reformat Document' in Visual Studio."
   (interactive)
   (unless (or (equal major-mode #'text-mode) (equal major-mode #'markdown-mode))
     (save-excursion (indent-region (point-min) (point-max) nil))))
@@ -195,7 +195,7 @@ Similar to #'Reformat Document' document in Visual Studio."
   "Load dark theme."
   (interactive)
   (sml/apply-theme #'dark)
-  (load-theme #'sanityinc-tomorrow-eighties)
+  (load-theme #'gruvbox-dark-hard)
   (my/apply-company-theme))
 
 (defun my/set-theme-light()

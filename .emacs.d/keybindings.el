@@ -18,7 +18,6 @@
 
 (global-set-key (kbd "C-k e") #'eval-buffer)
 (global-set-key (kbd "C-k i") #'indent-for-comment)
-(global-set-key (kbd "C-k j") #'join-lines)
 (global-set-key (kbd "C-k m") #'set-mark-command)
 (global-set-key (kbd "C-k s") #'sort-lines)
 (global-set-key (kbd "C-k u") #'untabify)

@@ -75,7 +75,7 @@
       history-delete-duplicates t
       savehist-save-minibuffer-history 1
       savehist-additional-variables #'(kill-ring search-ring regexp-search-ring)
-      vc-make-backup-files t)   ; also backup files in version control
+      vc-make-backup-files t) ; also backup files in version control
 (savehist-mode 1)
 
 ;; Shows all options when running apropos. For more info,
