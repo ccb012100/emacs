@@ -104,5 +104,4 @@
 ;; customize white-space-mode to > 80 chars/line for some modes
 (add-hook
  #'text-mode-hook
- #'markdown-mode-hook
  (lambda () (setq-local whitespace-line-column 120)))

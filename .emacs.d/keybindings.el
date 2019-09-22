@@ -16,6 +16,7 @@
 (global-set-key (kbd "<end>") #'end-of-line)
 (global-set-key (kbd "<home>") #'beginning-of-line)
 
+(global-set-key (kbd "C-h C-k") #'describe-personal-keybindings)
 (global-set-key (kbd "C-k e") #'eval-buffer)
 (global-set-key (kbd "C-k i") #'indent-for-comment)
 (global-set-key (kbd "C-k m") #'set-mark-command)
@@ -61,7 +62,6 @@
 (global-set-key (kbd "C-c j") #'windmove-down)
 
 ;;; bind to custom functions defined in defuns.el
-
 (global-set-key (kbd "M-<return>") #'my/new-line-below)
 
 (global-set-key (kbd "M-T") #'my/reopen-killed-file) ; <SHIFT> + <COMMAND> + t
@@ -76,7 +76,7 @@
 (global-set-key (kbd "C-k C-d") #'my/reformat-document)
 (global-set-key (kbd "C-k C-l") #'my/kill-ring-save-modified) ; copy
 (global-set-key (kbd "C-k d") #'my/insert-current-date)
-(global-set-key (kbd "C-k r") #'my/rotate-windows)
+;; (global-set-key (kbd "C-k r") #'my/rotate-windows)
 
 (global-set-key (kbd "C-x k") #'my/save-and-kill-buffer)
 
