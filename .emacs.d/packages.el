@@ -53,7 +53,8 @@
               (("C-n" . company-select-next-or-abort)
                ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode)
-  :init (setq company-idle-delay 0) ;; no delay for suggestions
+  ;; delay (in seconds) until displaying suggestions
+  :init (setq company-idle-delay 0.1)
   (setq company-global-modes #'(not text-mode markdown-mode)))
 
 (use-package drag-stuff
@@ -75,7 +76,8 @@
          ("C-z" . select-action)
          ("M-/" . helm-dabbrev)
          ("M-y" . helm-show-kill-ring)
-         :map helm-find-files-map ("C-<backspace>" . helm-find-files-up-one-level))
+         :map helm-find-files-map
+         ("C-<backspace>" . helm-find-files-up-one-level))
   :config (helm-mode 1)
   (ido-mode -1)
   (setq helm-split-window-inside-p t
@@ -107,12 +109,11 @@
         ("C-k r l" . rotate-layout)))
 
 (use-package smartparens
-  :hook ((elisp-mode . smartparens-strict-mode)
+  :hook ((elisp-mode . 'turn-on-smartparens-strict-mode)
          ('minibuffer-setup-hook 'turn-on-smartparens-strict-mode))
   :config (require 'smartparens-config)
   :bind (:map smartparens-mode
-              (("M-D" . sp-splice-sexp)
-               ("C-M-d" . sp-splice-sexp)
+              (("C-M-d" . sp-splice-sexp)
                ("C-M-n" . sp-forward-sexp)
                ("C-M-p" . sp-backward-sexp)
                ("C-M-o" . sp-backward-down-sexp)
@@ -122,9 +123,7 @@
                ("C-M-f" . sp-forward-sexp)
                ("C-M-b" . sp-backward-sp)
                ("<M-left>" . sp-backward-slurp-sexp)
-               ("<M-right>" . sp-forward-slurp-sexp)
-               ("<C-M-left>" . sp-backward-slurp-sexp)
-               ("<C-M-right>" . sp-forward-slurp-sexp))))
+               ("<M-right>" . sp-forward-slurp-sexp))))
 
 (use-package undo-tree
   :diminish undo-tree-mode
@@ -136,7 +135,7 @@
 (use-package which-key
   :bind ("C-h j" . which-key-show-major-mode)
   :init (which-key-mode)
-  (which-key-setup-minibuffer)
+  (which-key-setup-side-window-right-bottom)
   :config (setq which-key-max-description-length 80)
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))

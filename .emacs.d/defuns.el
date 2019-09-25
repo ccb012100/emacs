@@ -172,15 +172,23 @@ Similar to 'Reformat Document' in Visual Studio."
 (defun my/set-theme-dark()
   "Load dark theme."
   (interactive)
-  (sml/apply-theme #'dark)
-  (load-theme #'zenburn)
-  (my/apply-company-theme))
+  (my/set-theme #'dark #'sanityinc-tomorrow-eighties)
+  (set-face-attribute 'whitespace-space nil :foreground "gray30"))
 
 (defun my/set-theme-light()
   "Load light theme."
   (interactive)
-  (sml/apply-theme #'light) 
-  (load-theme #'gruvbox-light-soft)
+  (my/set-theme #'light #'gruvbox-light-soft))
+
+(defun my/set-theme (mode theme)
+  "Load a theme using passed-in values.
+
+Mode: dark or light
+Theme: theme to pass to (load-theme)"
+  (interactive)
+  (sml/apply-theme mode)
+  (load-theme theme)
+  (set-face-attribute 'whitespace-space nil :background nil)
   (my/apply-company-theme))
 
 (defun my/save-and-kill-buffer ()
@@ -205,7 +213,6 @@ Similar to 'Reformat Document' in Visual Studio."
   (interactive)
   (split-window-right)
   (set-window-buffer (next-window) (other-buffer)))
-
 
 ;;; KILLED FILE LIST
 ;; taken from https://emacs.stackexchange.com/a/3334
