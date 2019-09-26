@@ -20,25 +20,11 @@
 (use-package gruvbox-theme)
 (use-package zenburn-theme)
 
-(use-package aggressive-indent :init (global-aggressive-indent-mode t))
-(use-package auto-package-update)
-(use-package helm-descbinds :after helm :bind ("C-h b" . helm-descbinds))
-(use-package helm-swoop :after helm :bind ("C-k h s" . helm-swoop))
-(use-package hlinum :init (hlinum-activate))
-(use-package js2-mode :mode "\\.js\\'")
-(use-package json-mode :mode "\\.json\\'")
-(use-package json-navigator)
-(use-package magit)
-(use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
-(use-package rainbow-mode :hook html-mode css-mode scss-mode)
-(use-package syslog-mode :mode "/var/log.*\\'")
-(use-package thingatpt)
-(use-package windmove)
-(use-package yaml-mode :mode "\\.yml\\'")
-
 (use-package ace-window
   :bind ("M-o" . ace-window)
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
+
+(use-package aggressive-indent :init (global-aggressive-indent-mode t))
 
 (use-package avy
   :bind (("C-'" . avy-goto-char-2)
@@ -46,6 +32,8 @@
          ("C-k l" . avy-copy-line)
          ("M-g M-g" . avy-goto-line)
          :map isearch-mode-map ("C-'" . avy-isearch)))
+
+(use-package auto-package-update)
 
 (use-package company
   :bind (:map company-active-map
@@ -86,6 +74,14 @@
         helm-lisp-fuzzy-completion t
         helm-echo-input-in-header-line t))
 
+(use-package helm-descbinds :after helm :bind ("C-h b" . helm-descbinds))
+(use-package helm-swoop :after helm :bind ("C-k h s" . helm-swoop))
+(use-package hlinum :init (hlinum-activate))
+(use-package js2-mode :mode "\\.js\\'")
+(use-package json-mode :mode "\\.json\\'")
+(use-package json-navigator)
+(use-package magit)
+
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -103,7 +99,10 @@
          ("C-k o c" . origami-close-node))
   :init (global-origami-mode))
 
-(use-package rotate
+(use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
+(use-package rainbow-mode :hook html-mode css-mode scss-mode)
+
+(use-package rotate 
   :bind(("C-k r w" . rotate-window)
         ("C-k r l" . rotate-layout)))
 
@@ -132,6 +131,9 @@
                ("<M-left>" . sp-backward-slurp-sexp)
                ("<M-right>" . sp-forward-slurp-sexp))))
 
+(use-package syslog-mode :mode "/var/log.*\\'")
+(use-package thingatpt)
+
 (use-package undo-tree
   :diminish undo-tree-mode
   :config (global-undo-tree-mode))
@@ -146,3 +148,6 @@
   :config (setq which-key-max-description-length 80)
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))
+
+(use-package windmove)
+(use-package yaml-mode :mode "\\.yml\\'")
