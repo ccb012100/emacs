@@ -33,17 +33,18 @@
 ;; See: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
-(setq major-mode #'text-mode)       ; use text mode for new buffers
 (setq column-number-mode t)
 (setq create-lockfiles nil)         ; dont need lockfiles
 (setq custom-safe-themes t )        ; don't prompt to load themes
 (setq delete-by-moving-to-trash t ) ; move deleted files to trash
+(setq display-time-24hr-format t)
 (setq echo-keystrokes 0.1)          ; show unfinished keystrokes
 (setq gc-cons-threshold 50000000 )  ; increase threshold to 50 MB
 (setq ido-enable-flex-matching t)
 (setq inhibit-startup-screen t)
 (setq large-file-warning-threshold 100000000) ; increase threshold to 100MB
 (setq line-number-mode t)
+(setq major-mode #'text-mode)       ; use text mode for new buffers
 (setq ns-pop-up-frames nil)         ; always open in same frame
 (setq save-interprogram-paste-before-kill t)
 (setq select-enable-clipboard t)    ; integrate with OS clipboard

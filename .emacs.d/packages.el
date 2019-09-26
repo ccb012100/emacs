@@ -31,7 +31,6 @@
 (use-package magit)
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
 (use-package rainbow-mode :hook html-mode css-mode scss-mode)
-(use-package smart-mode-line :init (sml/setup))
 (use-package syslog-mode :mode "/var/log.*\\'")
 (use-package thingatpt)
 (use-package windmove)
@@ -107,6 +106,14 @@
 (use-package rotate
   :bind(("C-k r w" . rotate-window)
         ("C-k r l" . rotate-layout)))
+
+(use-package smart-mode-line
+  :init (sml/setup)
+  :config (setq sml/theme 'respectful))
+
+(use-package smart-mode-line-powerline-theme
+  :after smart-mode-line
+  :config (powerline-default-theme))
 
 (use-package smartparens
   :hook ((elisp-mode . 'turn-on-smartparens-strict-mode)
