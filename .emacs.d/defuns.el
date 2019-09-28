@@ -182,10 +182,9 @@ Similar to 'Reformat Document' in Visual Studio."
 
 (defun my/set-theme (theme)
   "Load a theme using passed-in values.
-Mode: dark or light
+
 Theme: theme to pass to (load-theme)"
   (interactive)
-  (powerline-default-theme)
   (load-theme theme)
   (set-face-attribute 'whitespace-space nil :background nil)
   (my/apply-company-theme))

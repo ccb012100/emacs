@@ -102,17 +102,13 @@
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
 (use-package rainbow-mode :hook html-mode css-mode scss-mode)
 
-(use-package rotate 
+(use-package rotate
   :bind(("C-k r w" . rotate-window)
         ("C-k r l" . rotate-layout)))
 
 (use-package smart-mode-line
   :init (sml/setup)
   :config (setq sml/theme 'respectful))
-
-(use-package smart-mode-line-powerline-theme
-  :after smart-mode-line
-  :config (powerline-default-theme))
 
 (use-package smartparens
   :hook ((elisp-mode . 'turn-on-smartparens-strict-mode)
