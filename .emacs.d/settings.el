@@ -86,6 +86,10 @@
 ;; Mouse yank commands yank at point instead of at click.
 (setq mouse-yank-at-point t)
 
+;; With the maximum-scroll-margin set to 0, the cursor will stay same relative
+;; position from the top/bottom of the window when srolling
+(setq maximum-scroll-margin 0)
+
 ;; Save point position between sessions
 ;; from http://whattheemacsd.com/init.el-03.html
 (require #'saveplace)
@@ -103,6 +107,4 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; customize white-space-mode to > 80 chars/line for some modes
-(add-hook
- #'text-mode-hook
- (lambda () (setq-local whitespace-line-column 120)))
+(add-hook #'text-mode-hook (lambda () (setq-local whitespace-line-column 120)))
