@@ -1,4 +1,5 @@
 ;;;; Emacs init file (same as ~/.emacs file)
+;;;;
 ;;;; located at ~/.emacs.d/init.el
 
 ;; start emacs server
@@ -15,30 +16,39 @@
 ;; confirm kill if emacs is started by non-deamon mode
 (if (daemonp) nil (setq confirm-kill-emacs #'y-or-n-p))
 
-;; macOS settings
-(setq macos-file "~/.emacs.d/macOS.el")
-(load macos-file)
-
-;; custom functions
-;; customizing emacs settings
+;;; Define configuration files
+(setq macos-file "~/.emacs.d/macOS.el") ; configurations specific to MacOS
 (setq settings-file "~/.emacs.d/settings.el")
-(load-file settings-file)
-
-(setq functions-file "~/.emacs.d/defuns.el")
-(load-file functions-file)
-
-;; custom keybindings
+(setq functions-file "~/.emacs.d/defuns.el") ; functions
 (setq keybindings-file "~/.emacs.d/keybindings.el")
-(load-file keybindings-file)
+(setq windmove-keybinds-file "~/.emacs.d/windmove-keybindings.el")
+(setq custom-keybinds-file "~/.emacs.d/custom-fn-keybindings.el")
 
-;; adding/configuring emacs packages
+;; Packages
+(setq pack-init-file "~/.emacs.d/packages-init.el")
+(setq theme-packs "~/.emacs.d/theme-packages.el")
 (setq packages-file "~/.emacs.d/packages.el")
-(load-file packages-file)
+(setq helm-packs-file "~/.emacs.d/helm-packages.el")
+(setq clojure-packs-file "~/.emacs.d/clojure-packages.el")
 
-;; load Clojure configurations
-(setq clojure-config-file "~/.emacs.d/clojure.el")
-(load-file clojure-config-file)
+;;; load configuration files
+(load-file settings-file)
+(load-file functions-file)
+(load-file pack-init-file)
+(load-file keybindings-file)
+(load-file windmove-keybinds-file)
+(load-file custom-keybinds-file)
+(load-file theme-packs)
+(load-file packages-file)
+(load-file helm-packs-file)
+(load-file clojure-packs-file)
+(load-file macos-file)
 
 (my/set-theme-dark)
 
-(kill-buffer "*scratch*") ; kill default scratch buffer
+;; use my persistant scratch file instead of volatile scratch buffer
+;(let ((scratch-lisp "~/scratch-lisp.el"))
+;  (if (file-exists-p scratch-lisp)
+;      (progn
+;        (kill-buffer "*scratch*") ; kill default scratch buffer
+;        (load-file scratch-lisp))))

@@ -1,5 +1,7 @@
 ;;;; custom functions
+;;;;
 ;;;; located in ~/.emacs.d/defuns.el
+
 (defun my/apply-company-theme()
   "Apply theming to company-mode"
   ;; taken from https://www.emacswiki.org/emacs/CompanyMode
@@ -103,7 +105,8 @@ In Visual Studio, this is called #'Select Word Under Cursor'"
     (goto-char (cadr bnd))))
 
 ;; copied from https://pages.sachachua.com/.emacs.d/Sacha.html
-;; originally from http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
+;; originally from
+;; http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun my/move-beginning-of-line-enhanced (arg)
   "Move point back to indentation of beginning of line.
 
@@ -169,10 +172,12 @@ Similar to 'Reformat Document' in Visual Studio."
           (message "File #'%s' successfully renamed to #'%s'"
                    name (file-name-nondirectory new-name)))))))
 
-(defun my/set-theme-dark()
+(defun my/set-theme-dark(&optional theme)
   "Load dark theme."
   (interactive)
-  (my/set-theme #'sanityinc-tomorrow-eighties)
+  (if (eq nil theme)
+      (my/set-theme-dark 'darktooth)
+    (my/set-theme theme))
   (set-face-attribute 'whitespace-space nil :foreground "gray30"))
 
 (defun my/set-theme-light()

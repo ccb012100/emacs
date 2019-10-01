@@ -1,5 +1,7 @@
-;;;; EMACS SETTINGS
+;;;; Customize Emacs settings
+;;;;
 ;;;; located in ~/.emacs.d/settings.el
+
 (blink-cursor-mode 0)
 (column-number-mode t)
 (delete-selection-mode 1)
@@ -101,7 +103,6 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
-
 ;; better method of giving buffers unique names
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)

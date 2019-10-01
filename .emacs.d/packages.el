@@ -1,24 +1,6 @@
 ;;;; PACKAGES
+;;;;
 ;;;; located in ~/.emacs.d/packages.el
-
-;;; SETUP
-(require #'package)
-(add-to-list #'package-archives #'("melpa" . "https://melpa.org/packages/") t)
-(add-to-list #'package-archives
-             #'("melpagnu" . "https://elpa.gnu.org/packages/") t)
-(package-initialize)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-(package-install-selected-packages)
-(setq use-package-verbose t)
-(setq use-package-always-ensure t)
-
-;;; PACKAGES
-;; themes
-(use-package color-theme-sanityinc-tomorrow)
-(use-package gruvbox-theme)
-(use-package zenburn-theme)
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
@@ -50,32 +32,6 @@
   :config (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)
   :hook (after-init . drag-stuff-define-keys))
 
-(use-package helm
-  ;; note: use `C-o` in helm-M-x to go to "Emacs Commands" list of suggestions
-  :bind (("M-x" . helm-M-x)
-         ("C-k C-o" . helm-buffers-list)
-         ("C-x C-f" . helm-find-files)
-         ("C-x b" . helm-buffers-list)
-         ("C-x m" . helm-mini)
-         ("C-x r b" . helm-filtered-bookmarks)
-         ("C-k h o" . helm-occur)
-         ("C-SPC" . helm-M-x)
-         ("C-z" . select-action)
-         ("M-/" . helm-dabbrev)
-         ("M-y" . helm-show-kill-ring)
-         :map helm-find-files-map
-         ("C-<backspace>" . helm-find-files-up-one-level))
-  :config (helm-mode 1)
-  (ido-mode -1)
-  (setq helm-split-window-inside-p t
-        helm-move-to-line-cycle-in-source 'nil
-        helm-mode-fuzzy-match t
-        helm-completion-in-region-fuzzy-match t
-        helm-lisp-fuzzy-completion t
-        helm-echo-input-in-header-line t))
-
-(use-package helm-descbinds :after helm :bind ("C-h b" . helm-descbinds))
-(use-package helm-swoop :after helm :bind ("C-k h s" . helm-swoop))
 (use-package hlinum :init (hlinum-activate))
 (use-package js2-mode :mode "\\.js\\'")
 (use-package json-mode :mode "\\.json\\'")
@@ -145,5 +101,4 @@
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))
 
-(use-package windmove)
 (use-package yaml-mode :mode "\\.yml\\'")
