@@ -106,7 +106,7 @@ In Visual Studio, this is called #'Select Word Under Cursor'"
 
 ;; copied from https://pages.sachachua.com/.emacs.d/Sacha.html
 ;; originally from
-;; http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
+;; http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-lqine/
 (defun my/move-beginning-of-line-enhanced (arg)
   "Move point back to indentation of beginning of line.
 
@@ -142,7 +142,7 @@ point reaches the beginning or end of the buffer, stop there."
   (end-of-line)
   (newline))
 
-(defun my/open-todo-file() 
+(defun my/open-todo-file()
   "Open todo.txt"
   (interactive)
   (find-file "~/daily-to-do-notes.txt"))
