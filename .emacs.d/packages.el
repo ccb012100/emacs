@@ -3,7 +3,8 @@
 ;;;; located in ~/.emacs.d/packages.el
 
 (use-package ace-window
-  :bind ("M-o" . ace-window)
+  :bind (("M-o" . ace-window)
+         ("C-k a" . ace-swap-window))
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
 (use-package aggressive-indent :init (global-aggressive-indent-mode t))
