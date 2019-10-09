@@ -7,7 +7,7 @@
          ("C-k a" . ace-swap-window))
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
-(use-package aggressive-indent :init (global-aggressive-indent-mode t))
+;; (use-package aggressive-indent :init (global-aggressive-indent-mode t))
 
 (use-package avy
   :bind (("C-'" . avy-goto-char-2)
@@ -81,6 +81,9 @@
                ("C-M-e" . sp-up-sexp)
                ("C-M-f" . sp-forward-sexp)
                ("C-M-b" . sp-backward-sp)
+               ("<M-up>" . sp-wrap-round)
+               ("<M-S-up>" . sp-wrap-square)
+               ("<M-down>" . sp-unwrap-sexp)
                ("<M-left>" . sp-backward-slurp-sexp)
                ("<M-right>" . sp-forward-slurp-sexp))))
 

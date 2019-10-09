@@ -176,7 +176,7 @@ Similar to 'Reformat Document' in Visual Studio."
   "Load dark theme."
   (interactive)
   (if (eq nil theme)
-      (my/set-theme-dark 'darktooth)
+      (my/set-theme-dark #'gruvbox-dark-hard)
     (my/set-theme theme))
   (set-face-attribute 'whitespace-space nil :foreground "gray30"))
 

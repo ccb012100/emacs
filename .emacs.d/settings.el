@@ -2,7 +2,7 @@
 ;;;;
 ;;;; located in ~/.emacs.d/settings.el
 
-(blink-cursor-mode 0)
+(blink-cursor-mode 1)
 (column-number-mode t)
 (delete-selection-mode 1)
 (desktop-save-mode 1)           ; remember last desktop settings
