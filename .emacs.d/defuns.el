@@ -105,7 +105,7 @@ In Visual Studio, this is called #'Select Word Under Cursor'"
     (goto-char (cadr bnd))))
 
 ;; copied from https://pages.sachachua.com/.emacs.d/Sacha.html
-;; originally from
+;; originally fromn
 ;; http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-lqine/
 (defun my/move-beginning-of-line-enhanced (arg)
   "Move point back to indentation of beginning of line.
@@ -176,14 +176,16 @@ Similar to 'Reformat Document' in Visual Studio."
   "Load dark theme."
   (interactive)
   (if (eq nil theme)
-      (my/set-theme-dark #'gruvbox-dark-hard)
+      (my/set-theme-dark dark-theme)
     (my/set-theme theme))
   (set-face-attribute 'whitespace-space nil :foreground "gray30"))
 
-(defun my/set-theme-light()
+(defun my/set-theme-light(&optional theme theme)
   "Load light theme."
   (interactive)
-  (my/set-theme #'gruvbox-light-hard))
+  (if (eq nil theme)
+      (my/set-theme light-theme)
+    (my/set-theme theme)))
 
 (defun my/set-theme (theme)
   "Load a theme using passed-in values.

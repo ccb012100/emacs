@@ -1,8 +1,8 @@
 ;;;; MacOS-specific settings
 ;;;; located at ~/.emacs.d/macOS.el
 (when (eq system-type #'darwin)
-  (setq mac-option-modifier #'meta)
-  (setq mac-command-modifier #'meta)
+  (setq mac-option-modifier #'super) ; 'alt/option' sends 'M'
+  (setq mac-command-modifier #'meta) ; 'command' sends 'M'
   (global-set-key [kp-delete] #'delete-char) ; maps fn-delete to right-delete
   (set-face-attribute #'default nil :family "Hack" :height 120) ; set font
 

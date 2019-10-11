@@ -44,11 +44,16 @@
 (setq gc-cons-threshold 50000000 )  ; increase threshold to 50 MB
 (setq ido-enable-flex-matching t)
 (setq inhibit-startup-screen t)
-(setq large-file-warning-threshold 100000000) ; increase threshold to 100MB
+;; (setq initial-major-mode
+      ;; #'lisp-interaction-mode)      ; *scratch* buffer mode
+(setq large-file-warning-threshold
+      100000000)                    ; increase threshold to 100MB
 (setq line-number-mode t)
-(setq major-mode #'text-mode)       ; use text mode for new buffers
+;; (setq major-mode #'text-mode)       ; use text mode for new buffers
 (setq ns-pop-up-frames nil)         ; always open in same frame
+
 (setq save-interprogram-paste-before-kill t)
+
 (setq select-enable-clipboard t)    ; integrate with OS clipboard
 (setq select-enable-primary t)      ; cut/paste uses primary selection
 (setq sentence-end-double-space nil); sentence ends in single space
@@ -78,7 +83,7 @@
       history-delete-duplicates t
       savehist-save-minibuffer-history 1
       savehist-additional-variables #'(kill-ring search-ring regexp-search-ring)
-      vc-make-backup-files t) ; also backup files in version control
+      vc-make-backup-files t)       ; also backup files in version control
 (savehist-mode 1)
 
 ;; Shows all options when running apropos. For more info,
@@ -94,7 +99,7 @@
 
 ;; Save point position between sessions
 ;; from http://whattheemacsd.com/init.el-03.html
-(require #'saveplace)
+(require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
@@ -103,6 +108,7 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 50)
+
 ;; better method of giving buffers unique names
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)

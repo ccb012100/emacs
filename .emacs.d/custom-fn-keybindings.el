@@ -12,10 +12,10 @@
 (global-set-key (kbd "C-o") #'my/move-beginning-of-line-enhanced)
 (global-set-key (kbd "C-w") #'my/mark-word-under-cursor)
 
-(global-set-key (kbd "C-k C-d") #'my/reformat-document)
-(global-set-key (kbd "C-k C-l") #'my/kill-ring-save-modified) ; copy
-(global-set-key (kbd "C-k d") #'my/insert-current-date)
-(global-set-key (kbd "C-k k") #'my/duplicate-line-or-region)
+(global-set-key (kbd "C-l C-d") #'my/reformat-document)
+(global-set-key (kbd "C-l C-l") #'my/kill-ring-save-modified) ; copy
+(global-set-key (kbd "C-l d") #'my/insert-current-date)
+(global-set-key (kbd "C-l k") #'my/duplicate-line-or-region)
 
 (global-set-key (kbd "C-x k") #'my/save-and-kill-buffer)
 

@@ -4,15 +4,15 @@
 
 (use-package ace-window
   :bind (("M-o" . ace-window)
-         ("C-k a" . ace-swap-window))
+         ("C-l a" . ace-swap-window))
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
 ;; (use-package aggressive-indent :init (global-aggressive-indent-mode t))
 
 (use-package avy
   :bind (("C-'" . avy-goto-char-2)
-         ("C-k g" . avy-goto-line)
-         ("C-k l" . avy-copy-line)
+         ("C-l g" . avy-goto-line)
+         ("C-l l" . avy-copy-line)
          ("M-g M-g" . avy-goto-line)
          :map isearch-mode-map ("C-'" . avy-isearch)))
 
@@ -23,14 +23,18 @@
               (("C-n" . company-select-next-or-abort)
                ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode)
-  ;; delay (in seconds) until displaying suggestions
-  :init (setq company-idle-delay 0.1)
+  :init (setq company-idle-delay 0.1) ; delay (in s) before display suggestions
   (setq company-global-modes #'(not text-mode markdown-mode)))
 
 (use-package drag-stuff
-  :init (drag-stuff-global-mode 1)
+  :init
+  (drag-stuff-global-mode 1)
   (drag-stuff-mode t)
-  :config (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)
+  :config
+  (add-to-list #'drag-stuff-except-modes #'lisp-mode)
+  (add-to-list #'drag-stuff-except-modes #'lisp-interaction-mode)
+  (add-to-list #'drag-stuff-except-modes #'ielm-mode)
+  (add-to-list #'drag-stuff-except-modes #'helm-mode)
   :hook (after-init . drag-stuff-define-keys))
 
 (use-package hlinum :init (hlinum-activate))
@@ -48,47 +52,38 @@
   :hook (markdown-mode . (lambda () (setq-local whitespace-line-column 120))))
 
 (use-package origami
-  :bind (("C-k o t" . origami-forward-toggle-node)
-         ("C-k o p" . origami-previous-fold)
-         ("C-k o n" . origami-forward-fold)
-         ("C-k o b" . origami-backward-fold-same-level)
-         ("C-k o f" . origami-forward-fold-same-level)
-         ("C-k o c" . origami-close-node))
+  :bind (("C-l o t" . origami-forward-toggle-node)
+         ("C-l o p" . origami-previous-fold)
+         ("C-l o n" . origami-forward-fold)
+         ("C-l o b" . origami-backward-fold-same-level)
+         ("C-l o f" . origami-forward-fold-same-level)
+         ("C-l o c" . origami-close-node))
   :init (global-origami-mode))
+
+(use-package paredit
+  :config
+  (add-to-list #'drag-stuff-except-modes #'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  ;; enable in the *scratch* buffer
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
 
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
 (use-package rainbow-mode :hook html-mode css-mode scss-mode)
 
 (use-package rotate
-  :bind(("C-k r w" . rotate-window)
-        ("C-k r l" . rotate-layout)))
+  :bind(("C-l r w" . rotate-window)
+        ("C-l r l" . rotate-layout)))
 
 (use-package smart-mode-line
   :init (sml/setup)
   :config (setq sml/theme 'respectful))
 
 (use-package smartparens
-  :hook ((elisp-mode . 'turn-on-smartparens-strict-mode)
-         ('minibuffer-setup-hook 'turn-on-smartparens-strict-mode))
   :config (require 'smartparens-config)
-  :bind (:map smartparens-mode
-              (("C-M-d" . sp-splice-sexp)
-               ("C-M-n" . sp-forward-sexp)
-               ("C-M-p" . sp-backward-sexp)
-               ("C-M-o" . sp-backward-down-sexp)
-               ("C-M-u" . sp-backward-up-sexp)
-               ("C-M-i" . sp-down-sexp)
-               ("C-M-e" . sp-up-sexp)
-               ("C-M-f" . sp-forward-sexp)
-               ("C-M-b" . sp-backward-sp)
-               ("M-h" . sp-wrap-round)
-               ("M-a" . sp-unwrap-sexp)
-               ("M-H" . sp-wrap-square)
-               ("<M-up>" . sp-wrap-round)
-               ("<M-S-up>" . sp-wrap-square)
-               ("<M-down>" . sp-unwrap-sexp)
-               ("<M-left>" . sp-backward-slurp-sexp)
-               ("<M-right>" . sp-forward-slurp-sexp))))
+  :config (add-to-list #'drag-stuff-except-modes #'smartparens-mode))
 
 (use-package syslog-mode :mode "/var/log.*\\'")
 (use-package thingatpt)

@@ -31,6 +31,9 @@
 (setq helm-packs-file "~/.emacs.d/helm-packages.el")
 (setq clojure-packs-file "~/.emacs.d/clojure-packages.el")
 
+(setq dark-theme #'monokai)
+(setq light-theme #'gruvbox-light-hard)
+
 ;;; load configuration files
 (load-file settings-file)
 (load-file functions-file)
@@ -45,10 +48,3 @@
 (load-file macos-file)
 
 (my/set-theme-dark)
-
-;; use my persistant scratch file instead of volatile scratch buffer
-;(let ((scratch-lisp "~/scratch-lisp.el"))
-;  (if (file-exists-p scratch-lisp)
-;      (progn
-;        (kill-buffer "*scratch*") ; kill default scratch buffer
-;        (load-file scratch-lisp))))
