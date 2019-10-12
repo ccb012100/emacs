@@ -23,7 +23,8 @@
 (global-set-key (kbd "C-l u") #'untabify)
 (global-set-key (kbd "C-l w") #'whitespace-mode)     ; toggle whitespace-mode
 
-(global-set-key (kbd "C-l C-l") #'kill-region)       ; cut
+(global-set-key (kbd "C-l C-k") #'kill-region)       ; cut
+(global-set-key (kbd "C-l C-w") #'toggle-word-wrap)
 
 (global-set-key (kbd "C-x C-/") #'comment-region)    ; paste
 (global-set-key (kbd "C-x C-e") #'pp-eval-last-sexp) ; pretty-print

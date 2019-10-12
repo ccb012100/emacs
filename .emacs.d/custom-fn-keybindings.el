@@ -14,6 +14,7 @@
 
 (global-set-key (kbd "C-l C-d") #'my/reformat-document)
 (global-set-key (kbd "C-l C-l") #'my/kill-ring-save-modified) ; copy
+
 (global-set-key (kbd "C-l d") #'my/insert-current-date)
 (global-set-key (kbd "C-l k") #'my/duplicate-line-or-region)
 
