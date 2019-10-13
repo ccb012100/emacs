@@ -31,7 +31,7 @@
 (setq helm-packs-file "~/.emacs.d/helm-packages.el")
 (setq clojure-packs-file "~/.emacs.d/clojure-packages.el")
 
-(setq dark-theme #'monokai)
+(setq dark-theme #'gruvbox-dark-hard)
 (setq light-theme #'gruvbox-light-hard)
 
 ;;; load configuration files
