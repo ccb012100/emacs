@@ -20,12 +20,16 @@
   :init (auto-package-update-now))
 
 (use-package company
+  :diminish company-mode
   :bind (:map company-active-map
               (("C-n" . company-select-next-or-abort)
                ("C-p" . company-select-previous-or-abort)))
   :hook (after-init . global-company-mode)
   :init (setq company-idle-delay 0.1) ; delay (in s) before display suggestions
   (setq company-global-modes #'(not text-mode markdown-mode)))
+
+(use-package diminish
+  :diminish eldoc-mode visual-line-mode global-whitespace-mode whitespace-mode)
 
 (use-package drag-stuff
   :init
@@ -92,12 +96,14 @@
 (use-package thingatpt)
 
 (use-package undo-tree
+  :diminish undo-tree-mode
   :config (global-undo-tree-mode))
 
 (use-package vimrc-mode
   :init (add-to-list #'auto-mode-alist #'("\\.vim\\(rc\\)?\\'" . vimrc-mode)))
 
 (use-package which-key
+  :diminish which-key-mode
   :bind ("C-h j" . which-key-show-major-mode)
   :init (which-key-mode)
   (which-key-setup-side-window-right-bottom)
