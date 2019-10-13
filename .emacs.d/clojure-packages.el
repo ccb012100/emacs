@@ -24,6 +24,7 @@
         cider-save-file-on-load t)
   (add-to-list 'drag-stuff-except-modes 'cider-repl-mode)
   :bind (("C-c c j" . cider-jack-in)
-         ("C-l e" . cider-eval-buffer))
+         ("C-l e" . cider-eval-buffer)
+         ("C-M-x" . cider-eval-defun-at-point))
   ;; use longer idle delay for company than elsewhere
   :hook (cider-repl-mode . (lambda () (setq company-idle-delay 0.5))))

@@ -50,3 +50,5 @@
 (global-set-key (kbd "M-p") #'scroll-down-line)
 (global-set-key (kbd "M-q") #'universal-argument)
 (global-set-key (kbd "M-w") #'mode-line-other-buffer) ; open previous buffer
+
+(global-set-key (kbd "C-c C-c") #'eval-defun) ; same as 'cider' uses for Clojure
