@@ -6,6 +6,8 @@
 
 (global-set-key (kbd "C-l") nil) ; set 'C-l' to nil to free up as a prefix key
 
+(global-set-key (kbd "C-x C-l") nil) ; don't ever want to use 'downcase-region'
+
 (global-set-key [f5]  #'revert-buffer)
 (global-set-key [f7]  #'which-key-show-top-level)
 (global-set-key [f11] #'eval-buffer)

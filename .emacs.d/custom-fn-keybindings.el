@@ -19,6 +19,7 @@
 (global-set-key (kbd "C-l k") #'my/duplicate-line-or-region)
 
 (global-set-key (kbd "C-x k") #'my/save-and-kill-buffer)
+(global-set-key (kbd "s-k") #'my/save-and-kill-buffer)
 
 (add-hook #'emacs-lisp-mode-hook
           (lambda ()

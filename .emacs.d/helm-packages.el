@@ -6,7 +6,6 @@
 (use-package helm
   ;; note: use 'C-o' in helm-M-x to go to "Emacs Commands" list of suggestions
   :bind (("M-x" . helm-M-x)
-         ("C-l C-o" . helm-buffers-list)
          ("C-x C-f" . helm-find-files)
          ("C-x b" . helm-buffers-list)
          ("C-x m" . helm-mini)

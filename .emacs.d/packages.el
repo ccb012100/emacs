@@ -16,7 +16,8 @@
          ("M-g M-g" . avy-goto-line)
          :map isearch-mode-map ("C-'" . avy-isearch)))
 
-(use-package auto-package-update)
+(use-package auto-package-update
+  :init (auto-package-update-now))
 
 (use-package company
   :bind (:map company-active-map
@@ -64,7 +65,6 @@
   :config
   (add-to-list #'drag-stuff-except-modes #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-  ;; enable in the *scratch* buffer
   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook #'enable-paredit-mode)
   (add-hook 'lisp-mode-hook #'enable-paredit-mode)
