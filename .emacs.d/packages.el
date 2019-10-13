@@ -38,11 +38,13 @@
   (add-to-list #'drag-stuff-except-modes #'helm-mode)
   :hook (after-init . drag-stuff-define-keys))
 
+(use-package git-commit)
+
 (use-package hlinum :init (hlinum-activate))
 (use-package js2-mode :mode "\\.js\\'")
 (use-package json-mode :mode "\\.json\\'")
 (use-package json-navigator)
-(use-package magit)
+(use-package magit :after git-commit)
 
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
@@ -70,6 +72,7 @@
   (add-hook 'lisp-mode-hook #'enable-paredit-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
 
+(use-package pcmpl-git :after git-commit)
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
 (use-package rainbow-mode :hook html-mode css-mode scss-mode)
 
@@ -89,7 +92,6 @@
 (use-package thingatpt)
 
 (use-package undo-tree
-  :diminish undo-tree-mode
   :config (global-undo-tree-mode))
 
 (use-package vimrc-mode
