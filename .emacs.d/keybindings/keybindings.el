@@ -1,6 +1,4 @@
 ;;;; KEY BINDINGS
-;;;;
-;;;; located in ~/.emacs.d/keybindings.el
 
 (define-key input-decode-map "\C-i" [C-i])  ; map C-i separate from <tab> key
 

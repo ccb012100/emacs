@@ -1,4 +1,4 @@
-;;;; Keybindings bound to custom functions defined in ~/.emacs./defuns.el
+;;;; Keybindings bound to custom functions
 
 ;;; Meta
 (global-set-key (kbd "M-<return>") #'my/new-line-below)

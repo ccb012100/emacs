@@ -1,6 +1,4 @@
 ;;;; windmove keybindings
-;;;;
-;;;; located in ~/.emacs.d/windmove-keybindings.el
 
 ;;; use arrow keys
 (global-set-key (kbd "C-c <left>")  #'windmove-left)
