@@ -15,37 +15,59 @@
 (if (daemonp) nil (setq confirm-kill-emacs #'y-or-n-p))
 
 ;;; Configuration files
-(setq settings-file "~/.emacs.d/settings.el")
+(setq settings-file
+      "~/.emacs.d/settings.el")
 (load-file settings-file)
 
 ;; Functions
-(setq functions-file "~/.emacs.d/defuns.el")
+(setq functions-file
+      "~/.emacs.d/defuns.el")
 (load-file functions-file)
 
 ;; Keybindings
-(setq keybindings-file "~/.emacs.d/keybindings/keybindings.el")
-(setq windmove-keybinds-file "~/.emacs.d/keybindings/windmove-keybindings.el")
-(setq custom-keybinds-file "~/.emacs.d/keybindings/custom-fn-keybindings.el")
+(setq keybindings-file
+      "~/.emacs.d/keybindings/keybindings.el")
+(setq windmove-keybinds-file
+      "~/.emacs.d/keybindings/windmove-keybindings.el")
+(setq custom-keybinds-file
+      "~/.emacs.d/keybindings/custom-fn-keybindings.el")
 (load-file keybindings-file)
 (load-file windmove-keybinds-file)
 (load-file custom-keybinds-file)
 
 ;; Packages
-(setq pack-init-file "~/.emacs.d/packages/packages-init.el")
-(setq theme-packs "~/.emacs.d/packages/theme-packages.el")
-(setq packages-file "~/.emacs.d/packages/packages.el")
-(setq helm-packs-file "~/.emacs.d/packages/helm-packages.el")
-(setq clojure-packs-file "~/.emacs.d/packages/clojure-packages.el")
-(setq file-mode-packages-file "~/.emacs.d/packages/file-mode-packages.el")
+(setq pack-init-file
+      "~/.emacs.d/packages/packages-init.el")
+(setq theme-packs
+      "~/.emacs.d/packages/theme-packages.el")
+(setq packages-file
+      "~/.emacs.d/packages/packages.el")
+(setq helm-packs-file
+      "~/.emacs.d/packages/helm-packages.el")
+(setq clojure-packs-file
+      "~/.emacs.d/packages/clojure-packages.el")
+(setq file-mode-packages-file
+      "~/.emacs.d/packages/file-mode-packages.el")
+(setq display-packages-file
+      "~/.emacs.d/packages/display-packages.el")
+(setq navigation-packages-file
+      "~/.emacs.d/packages/navigation-packages.el")
+(setq text-manipulation-packages-file
+      "~/.emacs.d/packages/text-manipulation-packages.el")
+
 (load-file pack-init-file)
 (load-file theme-packs)
 (load-file packages-file)
 (load-file file-mode-packages-file)
+(load-file navigation-packages-file)
+(load-file display-packages-file)
+(load-file text-manipulation-packages-file)
 (load-file helm-packs-file)
 (load-file clojure-packs-file)
 
 ;; OS-specific
 (setq macos-file "~/.emacs.d/macOS.el") ; configurations specific to MacOS
+
 (load-file macos-file)
 
 ;; Themes
