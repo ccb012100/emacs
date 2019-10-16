@@ -176,13 +176,14 @@ Similar to 'Reformat Document' in Visual Studio."
   "Load dark theme."
   (interactive)
   (if (eq nil theme)
-      (my/set-theme-dark dark-theme)
+      (my/set-theme dark-theme)
     (my/set-theme theme))
-  (set-face-attribute 'whitespace-space nil :foreground "gray30")
-  (set-face-attribute 'sml/minor-modes nil :foreground "gray70")
-  (set-face-attribute 'sml/filename nil :foreground "pink"))
+  ;; (set-face-attribute 'whitespace-space nil :foreground "gray30")
+  ;; (set-face-attribute 'sml/minor-modes nil :foreground "gray70")
+  ;; (set-face-attribute 'sml/filename nil :foreground "pink")
+  )
 
-(defun my/set-theme-light(&optional theme theme)
+(defun my/set-theme-light(&optional theme)
   "Load light theme."
   (interactive)
   (if (eq nil theme)

@@ -72,6 +72,6 @@
 
 ;; Themes
 (setq dark-theme #'atom-one-dark)
-(setq light-theme #'gruvbox-light)
+(setq light-theme #'gruvbox-light-soft)
 
 (my/set-theme-dark)

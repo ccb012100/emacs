@@ -6,7 +6,6 @@
 
 ;;; Super
 (global-set-key (kbd "s-k") #'my/save-and-kill-buffer)
-(global-set-key (kbd "s-r") #'move-to-window-line-top-bottom)
 
 ;;; Ctrl-Meta
 (global-set-key (kbd "C-M-<return>") #'my/open-new-line-above)

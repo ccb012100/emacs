@@ -8,3 +8,6 @@
 (use-package dracula-theme)
 (use-package gruvbox-theme)
 (use-package monokai-theme)
+(use-package monokai-alt-theme)
+(use-package monokai-pro-theme)
+(use-package solarized-theme)
