@@ -1,6 +1,4 @@
 ;;;; Customize Emacs settings
-;;;;
-;;;; located in ~/.emacs.d/settings.el
 
 (blink-cursor-mode 1)
 (column-number-mode t)
@@ -19,7 +17,7 @@
 (size-indication-mode t)
 (transient-mark-mode 1)         ; highlight text selections
 (tool-bar-mode -1)
-(whitespace-mode 1)
+(global-whitespace-mode 1)
 
 ;; Don't show native OS scroll bars for buffers because they're redundant
 (when (fboundp 'scroll-bar-mode)
