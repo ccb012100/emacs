@@ -71,7 +71,7 @@
 (load-file macos-file)
 
 ;; Themes
-(setq dark-theme #'atom-one-dark)
+(setq dark-theme #'darktooth)
 (setq light-theme #'gruvbox-light-soft)
 
 (my/set-theme-dark)
