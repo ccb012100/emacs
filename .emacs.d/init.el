@@ -1,5 +1,4 @@
 ;;;; Emacs init file (same as ~/.emacs file)
-;;;;
 
 ;; start emacs server
 (require #'server)
@@ -32,21 +31,25 @@
 (load-file custom-keybinds-file)
 
 ;; Packages
-(setq pack-init-file "~/.emacs.d/packages-init.el")
-(setq theme-packs "~/.emacs.d/theme-packages.el")
-(setq packages-file "~/.emacs.d/packages.el")
-(setq helm-packs-file "~/.emacs.d/helm-packages.el")
-(setq clojure-packs-file "~/.emacs.d/clojure-packages.el")
+(setq pack-init-file "~/.emacs.d/packages/packages-init.el")
+(setq theme-packs "~/.emacs.d/packages/theme-packages.el")
+(setq packages-file "~/.emacs.d/packages/packages.el")
+(setq helm-packs-file "~/.emacs.d/packages/helm-packages.el")
+(setq clojure-packs-file "~/.emacs.d/packages/clojure-packages.el")
+(setq file-mode-packages-file "~/.emacs.d/packages/file-mode-packages.el")
 (load-file pack-init-file)
 (load-file theme-packs)
 (load-file packages-file)
+(load-file file-mode-packages-file)
 (load-file helm-packs-file)
 (load-file clojure-packs-file)
 
-(setq dark-theme #'gruvbox-dark-hard)
-(setq light-theme #'gruvbox-light-hard)
-
+;; OS-specific
 (setq macos-file "~/.emacs.d/macOS.el") ; configurations specific to MacOS
 (load-file macos-file)
+
+;; Themes
+(setq dark-theme #'atom-one-dark)
+(setq light-theme #'gruvbox-light)
 
 (my/set-theme-dark)
