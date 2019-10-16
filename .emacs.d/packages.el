@@ -1,6 +1,4 @@
 ;;;; PACKAGES
-;;;;
-;;;; located in ~/.emacs.d/packages.el
 
 (use-package ace-window
   :bind (("M-o" . ace-window)
@@ -48,18 +46,7 @@
 (use-package git-commit)
 
 (use-package hlinum :init (hlinum-activate))
-(use-package js2-mode :mode "\\.js\\'")
-(use-package json-mode :mode "\\.json\\'")
-(use-package json-navigator)
 (use-package magit :after git-commit)
-
-(use-package markdown-mode
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "pandoc")
-  :hook (markdown-mode . (lambda () (setq-local whitespace-line-column 120))))
 
 (use-package origami
   :bind (("C-l o t" . origami-forward-toggle-node)
@@ -93,19 +80,11 @@
   :init (sml/setup)
   :config (setq sml/theme 'respectful))
 
-(use-package smartparens
-  :config (require 'smartparens-config)
-  :config (add-to-list #'drag-stuff-except-modes #'smartparens-mode))
-
-(use-package syslog-mode :mode "/var/log.*\\'")
 (use-package thingatpt)
 
 (use-package undo-tree
   :diminish undo-tree-mode
   :config (global-undo-tree-mode))
-
-(use-package vimrc-mode
-  :init (add-to-list #'auto-mode-alist #'("\\.vim\\(rc\\)?\\'" . vimrc-mode)))
 
 (use-package which-key
   :diminish which-key-mode
@@ -115,5 +94,3 @@
   :config (setq which-key-max-description-length 80)
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))
-
-(use-package yaml-mode :mode "\\.yml\\'")
