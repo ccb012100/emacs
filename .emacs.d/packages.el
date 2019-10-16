@@ -16,8 +16,7 @@
          ("M-g M-g" . avy-goto-line)
          :map isearch-mode-map ("C-'" . avy-isearch)))
 
-(use-package auto-package-update
-  :init (auto-package-update-now))
+(use-package auto-package-update)
 
 (use-package company
   :diminish company-mode
@@ -35,7 +34,11 @@
   :init
   (drag-stuff-global-mode 1)
   (drag-stuff-mode t)
+  :bind (:map drag-stuff-mode-map
+              (("<M-up>" . drag-stuff-up)
+               ("<M-down>" . drag-stuff-down)))
   :config
+  (add-to-list #'drag-stuff-except-modes #'emacs-lisp-mode)
   (add-to-list #'drag-stuff-except-modes #'lisp-mode)
   (add-to-list #'drag-stuff-except-modes #'lisp-interaction-mode)
   (add-to-list #'drag-stuff-except-modes #'ielm-mode)
@@ -74,7 +77,9 @@
   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook #'enable-paredit-mode)
   (add-hook 'lisp-mode-hook #'enable-paredit-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
+  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
+  :bind (:map paredit-mode-map 
+              ("C-l C-k" . paredit-hack-kill-region)))
 
 (use-package pcmpl-git :after git-commit)
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
