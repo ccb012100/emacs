@@ -23,9 +23,9 @@
 (load-file functions-file)
 
 ;; Keybindings
-(setq keybindings-file "~/.emacs.d/keybindings.el")
-(setq windmove-keybinds-file "~/.emacs.d/windmove-keybindings.el")
-(setq custom-keybinds-file "~/.emacs.d/custom-fn-keybindings.el")
+(setq keybindings-file "~/.emacs.d/keybindings/keybindings.el")
+(setq windmove-keybinds-file "~/.emacs.d/keybindings/windmove-keybindings.el")
+(setq custom-keybinds-file "~/.emacs.d/keybindings/custom-fn-keybindings.el")
 (load-file keybindings-file)
 (load-file windmove-keybinds-file)
 (load-file custom-keybinds-file)
