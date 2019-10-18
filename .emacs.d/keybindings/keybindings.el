@@ -25,6 +25,7 @@
 (global-set-key (kbd "C-;") #'kill-line)             ; Delete from cursor to EOL
 (global-set-key (kbd "C-,") #'repeat)
 (global-set-key (kbd "C-]") #'move-to-window-line-top-bottom)
+(global-set-key (kbd "C-\\") #'universal-argument)
 
 (global-set-key (kbd "<C-i>") #'forward-word)
 
@@ -49,10 +50,9 @@
 (global-set-key (kbd "C-l s") #'sort-lines)
 (global-set-key (kbd "C-l u") #'untabify)
 
-(global-set-key (kbd "C-l w")
-                #'global-whitespace-toggle-options)  ; toggle whitespace-mode
+(global-set-key (kbd "C-l w") #'global-whitespace-mode)
 
-(global-set-key (kbd "C-c C-c") #'eval-defun) ; same as 'cider' uses for Clojure
+(global-set-key (kbd "C-c C-c") #'eval-defun)         ; same as 'cider' package
 
 (global-set-key (kbd "C-l C-k") #'kill-region)       ; cut
 (global-set-key (kbd "C-l C-w") #'toggle-word-wrap)

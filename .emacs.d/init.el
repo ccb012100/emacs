@@ -24,8 +24,17 @@
       "~/.emacs.d/defuns/defuns.el")
 (setq theme-functions-file
       "~/.emacs.d/defuns/theme-fns.el")
+(setq navigation-functions-files
+      "~/.emacs.d/defuns/navigation-fns.el")
+(setq text-manipulation-functions-file
+      "~/.emacs.d/defuns/text-manipulations-fns.el")
+(setq kill-functions-file
+      "~/.emacs.d/defuns/kill-fns.el")
 (load-file functions-file)
 (load-file theme-functions-file)
+(load-file navigation-functions-files)
+(load-file text-manipulation-functions-file)
+(load-file kill-functions-file)
 
 ;; Keybindings
 (setq keybindings-file
@@ -68,16 +77,16 @@
 (load-file helm-packs-file)
 (load-file clojure-packs-file)
 
-;; OS-specific
-(setq macos-file "~/.emacs.d/macOS.el")     ; configurations specific to MacOS
-
 ;; non-MELPA scripts
 (add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
 
+;; OS-specific
+(setq macos-file "~/.emacs.d/macOS.el")     ; configurations specific to MacOS
 (load-file macos-file)
 
 ;; Themes
-(setq dark-theme #'darktooth)
+(setq dark-theme #'atom-one-dark)
 (setq light-theme #'gruvbox-light-soft)
 
 (my/set-theme-dark)
+(print "init.el was fully loaded")
