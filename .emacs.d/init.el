@@ -66,7 +66,10 @@
 (load-file clojure-packs-file)
 
 ;; OS-specific
-(setq macos-file "~/.emacs.d/macOS.el") ; configurations specific to MacOS
+(setq macos-file "~/.emacs.d/macOS.el")     ; configurations specific to MacOS
+
+;; non-MELPA scripts
+(add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
 
 (load-file macos-file)
 
