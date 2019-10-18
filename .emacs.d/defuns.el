@@ -1,19 +1,4 @@
 ;;;; custom functions
-;;;;
-;;;; located in ~/.emacs.d/defuns.el
-
-(defun my/apply-company-theme()
-  "Apply theming to company-mode"
-  ;; taken from https://www.emacswiki.org/emacs/CompanyMode
-  (require #'color)
-  (let ((bg (face-attribute #'default :background)))
-    (custom-set-faces
-     `(company-tooltip
-       ((t (:inherit default :background ,(color-lighten-name bg 2)))))
-     `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
-     `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
-     `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
-     `(company-tooltip-common ((t (:inherit font-lock-constant-face)))))))
 
 (defun my/duplicate-line-or-region (&optional n)
   "Duplicate current line, or region if active.
@@ -88,11 +73,6 @@ With negative N, comment out original line and use the absolute value."
   "Reload the init.el file."
   (interactive)
   (load-file "~/.emacs.d/init.el"))
-
-;; disables all custom themes before loading (enabling) another one.
-;; from: https://emacs.stackexchange.com/a/3114
-(defadvice load-theme (before theme-dont-propagate activate)
-  (mapc #'disable-theme custom-enabled-themes))
 
 (defun my/mark-word-under-cursor ()
   "Mark the word the cursor is on.
@@ -171,33 +151,6 @@ Similar to 'Reformat Document' in Visual Studio."
           (set-buffer-modified-p nil)
           (message "File #'%s' successfully renamed to #'%s'"
                    name (file-name-nondirectory new-name)))))))
-
-(defun my/set-theme-dark(&optional theme)
-  "Load dark theme."
-  (interactive)
-  (if (eq nil theme)
-      (my/set-theme dark-theme)
-    (my/set-theme theme))
-  ;; (set-face-attribute 'whitespace-space nil :foreground "gray30")
-  ;; (set-face-attribute 'sml/minor-modes nil :foreground "gray70")
-  ;; (set-face-attribute 'sml/filename nil :foreground "pink")
-  )
-
-(defun my/set-theme-light(&optional theme)
-  "Load light theme."
-  (interactive)
-  (if (eq nil theme)
-      (my/set-theme light-theme)
-    (my/set-theme theme)))
-
-(defun my/set-theme (theme)
-  "Load a theme using passed-in values.
-
-Theme: theme to pass to (load-theme)"
-  (interactive)
-  (load-theme theme)
-  (set-face-attribute 'whitespace-space nil :background nil)
-  (my/apply-company-theme))
 
 (defun my/save-and-kill-buffer ()
   "Before killing a buffer, ask to save it if it's unmodified."

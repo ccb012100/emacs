@@ -21,8 +21,11 @@
 
 ;; Functions
 (setq functions-file
-      "~/.emacs.d/defuns.el")
+      "~/.emacs.d/defuns/defuns.el")
+(setq theme-functions-file
+      "~/.emacs.d/defuns/theme-fns.el")
 (load-file functions-file)
+(load-file theme-functions-file)
 
 ;; Keybindings
 (setq keybindings-file
