@@ -24,4 +24,4 @@
   ;; add `/usr/local/bin` to PATH and exec-path
   ;; see https://www.emacswiki.org/emacs/EmacsApp#toc9
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-  (setq exec-path (split-string (getenv "PATH") ":")))
+  (setq-default exec-path (split-string (getenv "PATH") ":")))
