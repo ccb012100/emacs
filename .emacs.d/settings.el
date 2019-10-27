@@ -122,3 +122,5 @@
 ;; better method of giving buffers unique names
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+(add-to-list 'auto-mode-alist '("\\.config\\'" . xml-mode))
