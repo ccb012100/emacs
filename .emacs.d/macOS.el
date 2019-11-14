@@ -12,7 +12,7 @@
     (shell-command "open ."))
 
   ;; set font properties
-  (set-face-attribute #'default nil :family "Hack" :height 120)
+  (set-face-attribute #'default nil :family "SF Mono" :height 120)
 
   ;; ITERM2 MOUSE SUPPORT
   (unless window-system
