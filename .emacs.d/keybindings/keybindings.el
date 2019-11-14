@@ -1,10 +1,12 @@
 ;;;; KEY BINDINGS
 
-(define-key input-decode-map "\C-i" [C-i])  ; map C-i separate from <tab> key
+(define-key input-decode-map "\C-i" [C-i]) ; map C-i separate from <tab> key
 
-(global-set-key (kbd "C-l") nil) ; set 'C-l' to nil to free up as a prefix key
+(global-set-key (kbd "C-l") nil)           ; free up 'C-l' as a prefix key
 
-(global-set-key (kbd "C-x C-l") nil) ; don't ever want to use 'downcase-region'
+(global-set-key (kbd "C-x C-l") nil)       ; unbind 'downcase-region'
+
+(global-set-key (kbd "<S-tab>") #'indent-rigidly-right) ; unindent
 
 ;;; MOUSE
 (global-set-key [mouse-2] #'yank)
@@ -22,7 +24,7 @@
 
 ;;; CONTROL
 (global-set-key (kbd "C-.") #'redo)
-(global-set-key (kbd "C-;") #'kill-line)             ; Delete from cursor to EOL
+(global-set-key (kbd "C-;") #'kill-line) ; Delete from cursor to EOL
 (global-set-key (kbd "C-,") #'repeat)
 (global-set-key (kbd "C-]") #'move-to-window-line-top-bottom)
 (global-set-key (kbd "C-\\") #'universal-argument)
@@ -49,7 +51,6 @@
 (global-set-key (kbd "C-l m") #'set-mark-command)
 (global-set-key (kbd "C-l s") #'sort-lines)
 (global-set-key (kbd "C-l u") #'untabify)
-
 (global-set-key (kbd "C-l w") #'global-whitespace-mode)
 
 (global-set-key (kbd "C-c C-c") #'eval-defun)         ; same as 'cider' package
