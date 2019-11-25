@@ -55,7 +55,8 @@
 
 (global-set-key (kbd "C-c C-c") #'eval-defun)         ; same as 'cider' package
 
-(global-set-key (kbd "C-l C-k") #'kill-region)       ; cut
+(global-set-key (kbd "C-l C-c") #'recenter)         ; recenter window at point
+(global-set-key (kbd "C-l C-k") #'kill-region)      ; cut
 (global-set-key (kbd "C-l C-w") #'toggle-word-wrap)
 
 (global-set-key (kbd "C-x C-/") #'comment-region)    ; paste
