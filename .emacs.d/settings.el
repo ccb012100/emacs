@@ -38,6 +38,11 @@
 
 ;; customize white-space-mode to > 80 chars/line for some modes
 (add-hook #'text-mode-hook (lambda () (setq-local whitespace-line-column 120)))
+;; customize white-space-mode
+(setq whitespace-style (quote (face
+                               spaces tabs newline
+                               space-mark tab-mark newline-mark
+                               trailing lines)))
 
 ;;;
 ;;; functional settings
