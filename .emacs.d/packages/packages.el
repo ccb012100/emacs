@@ -1,8 +1,10 @@
 ;;;; PACKAGES
-(use-package auto-package-update)
 (use-package git-commit)
 (use-package magit :after git-commit)
 (use-package pcmpl-git :after git-commit)
+
+(use-package auto-package-update
+  :bind ("C-c u" . auto-package-update-now))
 
 (use-package which-key
   :diminish which-key-mode
