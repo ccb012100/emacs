@@ -6,6 +6,7 @@
 (global-set-key (kbd "M-N") #'my/next-line-10)
 (global-set-key (kbd "M-P") #'my/previous-line-10)
 (global-set-key (kbd "C-M-'") #'my/insert-sharp-quote)
+(global-set-key (kbd "M-c") #'my/kill-ring-save-modified) ; cut
 
 ;;; Super
 (global-set-key (kbd "s-k") #'my/save-and-kill-buffer)

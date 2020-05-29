@@ -36,12 +36,13 @@
 (global-set-key (kbd "C-u") #'backward-word)
 
 ;;; META
-(global-set-key (kbd "M-:") #'pp-eval-expression)     ; pretty-print results
+(global-set-key (kbd "M-:") #'pp-eval-expression)       ; pretty-print results
 (global-set-key (kbd "M-U") #'upcase-char)
 (global-set-key (kbd "M-n") #'scroll-up-line)
 (global-set-key (kbd "M-p") #'scroll-down-line)
 (global-set-key (kbd "M-q") #'universal-argument)
-(global-set-key (kbd "M-w") #'mode-line-other-buffer) ; open previous buffer
+(global-set-key (kbd "M-w") #'mode-line-other-buffer)   ; open previous buffer
+(global-set-key (kbd "M-v") #'yank)              ; paste
 
 ;;;; CHORD BINDINGS
 (global-set-key (kbd "C-l C-SPC") #'set-mark-command)

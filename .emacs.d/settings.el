@@ -16,7 +16,6 @@
 (size-indication-mode t)
 (tool-bar-mode -1)
 (transient-mark-mode 1)         ; highlight text selections
-
 (setq-default cursor-type #'bar)
 (setq column-number-mode t)
 (setq display-time-24hr-format t)
