@@ -1,7 +1,7 @@
 ;;;; PACKAGES
-(use-package git-commit)
-(use-package magit :after git-commit)
-(use-package pcmpl-git :after git-commit)
+;(use-package git-commit)
+;(use-package magit :after git-commit)
+;(use-package pcmpl-git :after git-commit)
 
 (use-package auto-package-update
   :bind ("C-c u" . auto-package-update-now))

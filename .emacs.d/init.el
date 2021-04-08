@@ -75,7 +75,7 @@
 (load-file display-packages-file)
 (load-file text-manipulation-packages-file)
 (load-file helm-packs-file)
-(load-file clojure-packs-file)
+;(load-file clojure-packs-file)
 
 ;; non-MELPA scripts
 (add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
