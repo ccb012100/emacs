@@ -15,6 +15,9 @@
 
 (package-install-selected-packages)
 
+(package-install 'use-package)
+(require 'use-package)
+
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
