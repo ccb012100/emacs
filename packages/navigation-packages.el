@@ -1,8 +1,7 @@
 ;;;; packages for navigating through text/buffers/windows
 
 (use-package ace-window
-  :bind (("M-o" . ace-window)
-         ("C-l a" . ace-swap-window))
+  :bind (("C-l a" . ace-swap-window))
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
 (use-package avy
