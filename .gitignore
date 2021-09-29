@@ -2,3 +2,8 @@
 \#*\#
 # default setting for location of the variable ‘auto-save-list-file-prefix’
 auto-save-list/
+.emacs.desktop
+.emacs.desktop.lock
+elpa/
+recentf
+savehist

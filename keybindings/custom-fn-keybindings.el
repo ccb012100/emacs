@@ -19,10 +19,10 @@
 ;;; Ctrl
 (global-set-key (kbd "C-j") #'my/join-lines)
 (global-set-key (kbd "C-o") #'my/move-beginning-of-line-enhanced)
-(global-set-key (kbd "C-w") #'my/mark-word-under-cursor)
+(global-set-key (kbd "C-l w") #'my/mark-word-under-cursor)
 
 (global-set-key (kbd "C-l C-d") #'my/reformat-document)
-(global-set-key (kbd "C-l C-l") #'my/kill-ring-save-modified) ; copy
+(global-set-key (kbd "M-w") #'my/kill-ring-save-modified) ; copy
 (global-set-key (kbd "C-l C-o") #'my/open-new-line-below)
 (global-set-key (kbd "C-l M-o") #'my/open-new-line-above)
 
