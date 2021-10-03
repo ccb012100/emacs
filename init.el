@@ -91,4 +91,5 @@
 (setq light-theme #'gruvbox-light-soft)
 
 (my/set-theme-dark)
+(set-face-background 'hl-line "#000000")
 (print "init.el was fully loaded")
