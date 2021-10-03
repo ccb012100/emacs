@@ -14,3 +14,8 @@
   :config (setq which-key-max-description-length 80)
   (setq which-key-popup-type #'side-window)
   (setq which-key-side-window-location #'(right bottom)))
+
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
