@@ -80,12 +80,14 @@
 ;; non-MELPA scripts
 (add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
 
+(set-face-attribute #'default nil :family "IBM Plex Mono" :height 110)
+
 ;; OS-specific
 (setq macos-file "~/.emacs.d/macOS.el")     ; configurations specific to MacOS
 (load-file macos-file)
 
 ;; Themes
-(setq dark-theme #'atom-one-dark)
+(setq dark-theme #'gruvbox-dark-hard)
 (setq light-theme #'gruvbox-light-soft)
 
 (my/set-theme-dark)
