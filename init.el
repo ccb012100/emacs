@@ -9,7 +9,7 @@
 
 ;; set default window size (desktop-save-mode will override this)
 (when (or window-system (daemonp))
-  (setq default-frame-alist #'( (width . 120) (height . 80) )))
+  (setq default-frame-alist #'( (width . 120) (height . 60) )))
 
 ;; confirm kill if emacs is started by non-deamon mode
 (if (daemonp) nil (setq confirm-kill-emacs #'y-or-n-p))
