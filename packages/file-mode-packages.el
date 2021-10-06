@@ -3,6 +3,7 @@
 (use-package js2-mode :mode "\\.js\\'")
 (use-package json-mode :mode "\\.json\\'")
 (use-package json-navigator)
+(use-package csharp-mode)
 
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
