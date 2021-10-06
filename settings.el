@@ -57,10 +57,6 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
-;; set TLS version to fix bug in Emacs.
-;; See: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
 (setq create-lockfiles nil)         ; dont need lockfiles
 (setq custom-safe-themes t )        ; don't prompt to load themes
 (setq delete-by-moving-to-trash t ) ; move deleted files to trash
