@@ -10,7 +10,7 @@
 (global-hl-line-mode 1)         ; highlight current line
 (global-linum-mode t)
 (global-visual-line-mode 1)     ; line-wrap on word boundaries
-(global-whitespace-mode 1)
+(global-whitespace-mode 0)
 (menu-bar-mode t)
 (show-paren-mode t)
 (size-indication-mode t)
@@ -41,7 +41,7 @@
 (setq whitespace-style (quote (face
                                spaces tabs newline
                                space-mark tab-mark newline-mark
-                               trailing lines)))
+                               trailing)))
 
 ;;;
 ;;; functional settings
@@ -81,7 +81,6 @@
 (setq scroll-margin 0
       scroll-conservatively 100000000
       scroll-preserve-screen-position 1)
-
 ;; file backups
 (setq backup-directory-alist #'(("." . "~/.emacs.backup"))
       backup-by-copying t
