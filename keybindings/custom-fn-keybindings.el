@@ -12,9 +12,9 @@
 
 ;;; Ctrl-Meta
 (global-set-key (kbd "C-M-'") #'my/insert-sharp-quote)
+(global-set-key (kbd "C-M-<return>") #'my/open-new-line-above)
 
 ;;; Ctrl
-(global-set-key (kbd "C-<return>") #'my/open-new-line-below)
 (global-set-key (kbd "C-a") #'my/move-beginning-of-line-enhanced)
 (global-set-key (kbd "C-j") #'my/join-lines)
 (global-set-key (kbd "C-o") #'my/move-beginning-of-line-enhanced)
