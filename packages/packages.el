@@ -19,3 +19,6 @@
   :ensure t
   :config
   (editorconfig-mode 1))
+
+(use-package tree-sitter
+  :init (use-package tree-sitter-langs))
