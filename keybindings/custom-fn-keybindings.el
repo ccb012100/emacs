@@ -30,7 +30,7 @@
 (global-set-key (kbd "C-x k") #'my/save-and-kill-buffer)
 
 ;; Meta
-(global-set-key (kbd "M-e") #'my/mark-word-under-cursor)
+(global-set-key (kbd "M-o") #'my/mark-word-under-cursor)
 (global-set-key (kbd "M-w") #'my/kill-ring-save-modified) ; copy
 
 (add-hook #'emacs-lisp-mode-hook
