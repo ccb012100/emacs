@@ -51,6 +51,8 @@
 (global-set-key (kbd "C-l M-w") #'toggle-word-wrap)
 (global-set-key (kbd "C-c C-c") #'eval-defun)           ; same as 'cider' package
 (global-set-key (kbd "C-x C-/") #'comment-region)       ; paste
+(global-set-key (kbd "C-x C-_") #'comment-region)       ; paste
 (global-set-key (kbd "C-x C-e") #'pp-eval-last-sexp)    ; pretty-print
 (global-set-key (kbd "C-x C-j") #'recentf-open-files)
 (global-set-key (kbd "C-x k") #'kill-this-buffer)       ; kill without asking
+(global-set-key (kbd "C-h DEL") #'backward-kill-word)   ; workaround because C-<DEL> (C-<Backspace>) sends C-h
