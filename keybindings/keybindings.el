@@ -34,6 +34,7 @@
 (global-set-key (kbd "M-:") #'pp-eval-expression)       ; pretty-print results
 (global-set-key (kbd "M-U") #'upcase-char)
 (global-set-key (kbd "M-W") #'yank)
+(global-set-key (kbd "M-k") #'kill-line)
 (global-set-key (kbd "M-n") #'scroll-up-line)
 (global-set-key (kbd "M-p") #'scroll-down-line)
 (global-set-key (kbd "M-q") #'universal-argument)

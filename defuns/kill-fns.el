@@ -58,3 +58,9 @@
   (interactive)
   (when my/killed-file-list
     (find-file (pop my/killed-file-list))))
+
+;; delete to start of line
+(defun my/backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg)))

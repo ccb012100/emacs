@@ -25,13 +25,13 @@
 (global-set-key (kbd "C-l C-o") #'my/open-new-line-below)
 (global-set-key (kbd "C-l M-o") #'my/open-new-line-above)
 
+(global-set-key (kbd "C-x DEL") #'my/backward-kill-line)
 (global-set-key (kbd "C-x 2") #'my/split-window-below-improved)
 (global-set-key (kbd "C-x 3") #'my/split-window-right-improved)
 (global-set-key (kbd "C-x k") #'my/save-and-kill-buffer)
 
 ;; Meta
 (global-set-key (kbd "M-o") #'my/mark-word-under-cursor)
-(global-set-key (kbd "M-w") #'my/kill-ring-save-modified) ; copy
 
 (add-hook #'emacs-lisp-mode-hook
           (lambda ()
