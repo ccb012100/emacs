@@ -10,12 +10,25 @@
 
 (package-initialize)
 
+;; Bootstrap 'use-package'
+(eval-after-load 'gnutls
+  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(require 'bind-key)
+
+(setq use-package-always-ensure t)
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 (package-install-selected-packages)
-
-(require 'use-package)
 
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
