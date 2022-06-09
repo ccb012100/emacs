@@ -80,7 +80,8 @@
 ;; non-MELPA scripts
 (add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
 
-(set-face-attribute #'default nil :family "IBM Plex Mono" :height 110)
+;; set font
+(set-frame-font "JetBrains Mono 11" nil t)
 
 ;; OS-specific
 (setq macos-file "~/.emacs.d/macOS.el")     ; configurations specific to MacOS
@@ -93,3 +94,4 @@
 (my/set-theme-dark)
 (set-face-background 'hl-line "#000000")
 (print "init.el was fully loaded")
+
