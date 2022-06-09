@@ -14,7 +14,6 @@
 (menu-bar-mode t)
 (show-paren-mode t)
 (size-indication-mode t)
-(tool-bar-mode -1)
 (transient-mark-mode 1)         ; highlight text selections
 (setq-default cursor-type #'bar)
 (setq column-number-mode t)
@@ -22,13 +21,16 @@
 (setq line-number-mode t)
 
 ;; Don't show native OS scroll bars for buffers because they're redundant
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode -1))
+;; disable scrollbar and toolbar when in a graphical display
+(if (display-graphic-p)
+  (progn
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)))
 
 ;; show full file path in frame title
 (setq frame-title-format
       #'((:eval (if (buffer-file-name)
-                    (abbreviate-file-name (buffer-file-name))
+                  (abbreviate-file-name (buffer-file-name))
                   "%b"))))
 
 ;; With the maximum-scroll-margin set to 0, the cursor will stay same relative
@@ -39,9 +41,9 @@
 (add-hook #'text-mode-hook (lambda () (setq-local whitespace-line-column 120)))
 ;; customize white-space-mode
 (setq whitespace-style (quote (face
-                               spaces tabs newline
-                               space-mark tab-mark newline-mark
-                               trailing)))
+                                spaces tabs newline
+                                space-mark tab-mark newline-mark
+                                trailing)))
 
 ;;;
 ;;; functional settings
