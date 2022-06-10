@@ -5,7 +5,7 @@
   :init (setq aw-keys #'(?a ?s ?d ?f ?j ?k ?l)))
 
 (use-package avy
-  :bind (("C-'" . avy-goto-char-2)
+  :bind (("C-," . avy-goto-char-2)
          ("C-l g" . avy-goto-line)
          ("C-l l" . avy-copy-line)
          ("M-g M-g" . avy-goto-line)

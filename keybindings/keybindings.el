@@ -20,6 +20,7 @@
 (global-set-key (kbd "s-r") #'move-to-window-line-top-bottom)
 
 ;;; CONTROL
+(global-set-key (kbd "C-;") #'set-mark-command)
 (global-set-key (kbd "C-.") #'redo)
 (global-set-key (kbd "C-,") #'repeat)
 (global-set-key (kbd "C-]") #'move-to-window-line-top-bottom)
@@ -40,7 +41,6 @@
 (global-set-key (kbd "M-q") #'universal-argument)
 
 ;;;; CHORD BINDINGS
-(global-set-key (kbd "C-l C-SPC") #'set-mark-command)
 (global-set-key (kbd "C-l e") #'eval-buffer)
 (global-set-key (kbd "C-l i") #'indent-for-comment)
 (global-set-key (kbd "C-l m") #'recenter)               ; recenter window at point
@@ -50,8 +50,7 @@
 (global-set-key (kbd "C-l C-w") #'global-whitespace-mode)
 (global-set-key (kbd "C-l M-w") #'toggle-word-wrap)
 (global-set-key (kbd "C-c C-c") #'eval-defun)           ; same as 'cider' package
-(global-set-key (kbd "C-x C-/") #'comment-region)       ; paste
-(global-set-key (kbd "C-x C-_") #'comment-region)       ; paste
+(global-set-key (kbd "C-x C-/") #'comment-region)
 (global-set-key (kbd "C-x C-e") #'pp-eval-last-sexp)    ; pretty-print
 (global-set-key (kbd "C-x C-j") #'recentf-open-files)
 (global-set-key (kbd "C-x k") #'kill-this-buffer)       ; kill without asking

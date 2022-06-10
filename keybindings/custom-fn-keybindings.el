@@ -17,7 +17,6 @@
 ;;; Ctrl
 (global-set-key (kbd "C-a") #'my/move-beginning-of-line-enhanced)
 (global-set-key (kbd "C-j") #'my/join-lines)
-(global-set-key (kbd "C-o") #'my/move-beginning-of-line-enhanced)
 
 (global-set-key (kbd "C-l C-d") #'my/reformat-document)
 (global-set-key (kbd "C-l d") #'my/insert-current-date)
