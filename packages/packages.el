@@ -21,5 +21,5 @@
   (editorconfig-mode 1))
 
 ;; commented out because it's failing to download from melpa
-;; (use-package tree-sitter
-;;   :init (use-package tree-sitter-langs))
+(use-package tree-sitter
+  :init (use-package tree-sitter-langs))
