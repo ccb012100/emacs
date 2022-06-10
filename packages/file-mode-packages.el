@@ -19,3 +19,7 @@
   :init (add-to-list #'auto-mode-alist #'("\\.vim\\(rc\\)?\\'" . vimrc-mode)))
 
 (use-package yaml-mode :mode "\\.yml\\'")
+
+(use-package rust-mode
+  :init (setq rust-format-on-save t)
+  :hook (rust-mode-hook . (lambda () (setq indent-tabs-mode nil))))
