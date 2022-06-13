@@ -21,8 +21,8 @@
 (global-set-key (kbd "C-l C-d") #'my/reformat-document)
 (global-set-key (kbd "C-l d") #'my/insert-current-date)
 (global-set-key (kbd "C-l k") #'my/duplicate-line-or-region)
-(global-set-key (kbd "C-l C-o") #'my/open-new-line-below)
-(global-set-key (kbd "C-l M-o") #'my/open-new-line-above)
+(global-set-key (kbd "C-o") #'my/open-new-line-below)
+(global-set-key (kbd "C-S-o") #'my/open-new-line-above)
 
 (global-set-key (kbd "C-x DEL") #'my/backward-kill-line)
 (global-set-key (kbd "C-x 2") #'my/split-window-below-improved)
