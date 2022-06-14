@@ -20,7 +20,9 @@
 (global-set-key (kbd "C-;") #'set-mark-command)
 (global-set-key (kbd "C-,") #'repeat)
 (global-set-key (kbd "C-\\") #'universal-argument)
+(global-set-key (kbd "C-i") #'forward-word)
 (global-set-key (kbd "C-k") #'kill-whole-line)
+(global-set-key (kbd "C-u") #'backward-word)
 
 ;;; META
 (global-set-key (kbd "<M-up>") #'drag-stuff-up)
