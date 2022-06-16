@@ -81,7 +81,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
 
 ;; set font
-(set-frame-font "JetBrains Mono 11" nil t)
+(set-frame-font "Hack 11" nil t)
 
 ;; OS-specific
 (setq macos-file "~/.emacs.d/macOS.el")     ; configurations specific to MacOS
