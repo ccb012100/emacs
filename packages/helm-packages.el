@@ -7,12 +7,13 @@
   ;; note: use 'C-o' in helm-M-x to go to "Emacs Commands" list of suggestions
   :diminish helm-mode
   :bind (("M-x" . helm-M-x)
+         ("C-SPC" . helm-M-x)
+         ("C-," . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ("C-x b" . helm-buffers-list)
          ("C-x m" . helm-mini)
          ("C-x r b" . helm-filtered-bookmarks)
          ("C-l h o" . helm-occur)
-         ("C-SPC" . helm-M-x)
          ("C-z" . select-action)
          ("M-/" . helm-dabbrev)
          ("M-y" . helm-show-kill-ring)
