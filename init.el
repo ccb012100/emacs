@@ -81,6 +81,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/") ; lisp scripts
 
 ;; set font
+(setq default-frame-alist ' ((font . "Hack 11")))
 (set-frame-font "Hack 11" nil t)
 
 ;; OS-specific
@@ -94,4 +95,3 @@
 (my/set-theme-dark)
 (set-face-background 'hl-line "#000000")
 (print "init.el was fully loaded")
-
