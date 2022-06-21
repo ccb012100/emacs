@@ -83,9 +83,10 @@
 (setq scroll-margin 0
       scroll-conservatively 100000000
       scroll-preserve-screen-position 1)
+
 ;; file backups
-(setq backup-directory-alist #'(("." . "~/.emacs.backup"))
-      backup-by-copying t
+(setq backup-directory-alist '(("." . "~/.emacs.backup"))
+      backup-by-copying t ; don't clobber symlinks
       delete-old-versions t
       kept-new-versions 1000
       kept-old-versions 1000
